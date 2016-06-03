@@ -12,7 +12,11 @@ body {
 
 h1 {
     text-align: center;
-    color: #eee;
+    color: #fafafa;
+}
+
+h2 {
+   color: #fafafa;
 }
 
 a:link {
