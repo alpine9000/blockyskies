@@ -5,21 +5,22 @@
 
 body {
     background-color: black;
-    color: #EEE;
+    color: #DCDCDC;
     font-family: Topaz;
     text-align: center;
 }
 
 h1 {
     text-align: center;
+    color: #eee;
 }
 
 a:link {
-    color: #eee;
+    color: #DCDCDC;
 }
 
 a:visited {
-    color: #eee;
+    color: #DCDCDC;
 }
 
 a:hover {
@@ -28,6 +29,11 @@ a:hover {
 
 a:active {
     color: #fff;
+}
+
+a.bottomLink {
+   margin-right: 1em;
+   margin-left: 1em;
 }
 
 .main {
@@ -41,4 +47,9 @@ a:active {
 .danger {
    color: red;
    font-weight: bold;
+}
+
+.go {
+    color: #15DE15;
+    font-weight: bold;
 }
