@@ -30,14 +30,9 @@ a:active {
     color: #fff;
 }
 
-pre {
-    color:  #ddd;
-    text-align: left;
-    display: inline-block; 
-    width: 600px;
-}
-
 .main {
+   margin-left: 0.5em;
+   margin-right: 0.5em;
    width: 600px;
    display: inline-block;
    text-align: left;
