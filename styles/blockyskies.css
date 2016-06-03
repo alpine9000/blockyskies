@@ -1,0 +1,51 @@
+@font-face {
+    font-family:Topaz;
+    src: url(fonts/Topaz_a1200_v1.0.ttf) format("truetype");
+}
+
+body {
+    background-color: black;
+    color: #EEE;
+    font-family: Topaz;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+a:link {
+    color: #eee;
+}
+
+a:visited {
+    color: #eee;
+}
+
+a:hover {
+    color: #fff;
+}
+
+a:active {
+    color: #fff;
+}
+
+pre {
+    color:  #ddd;
+    text-align: left;
+    display: inline-block; 
+    width: 645px;
+    overflow: hidden;
+
+}
+
+.main {
+   width: 600px;
+   display: inline-block;
+   text-align: left;
+}
+
+.danger {
+   color: red;
+   font-weight: bold;
+}
