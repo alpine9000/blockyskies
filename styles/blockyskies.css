@@ -12,7 +12,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #fafafa;
+    color: #69EBFF;
 }
 
 h2 {
@@ -35,9 +35,41 @@ a:active {
     color: #fff;
 }
 
+a.download:link {
+    color: #FC3B54;
+}
+
+a.download:visited {
+    color: #FC3B54;
+}
+
+a.download:hover {
+    color: #FF5F77;
+}
+
+a.download:active {
+    color: #FF5F77;
+}
+
 a.bottomLink {
    margin-right: 1em;
    margin-left: 1em;
+}
+
+a.bottomLink:link {
+    color: #69EBFF;
+}
+
+a.bottomLink:visited {
+    color: #69EBFF;
+}
+
+a.bottomLink:hover {
+    color: #AEEBFF;
+}
+
+a.bottomLink:active {
+    color: #AEEBFF;
 }
 
 .main {
