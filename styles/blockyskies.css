@@ -35,6 +35,11 @@ a:active {
     color: #fff;
 }
 
+a.download {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
 a.download:link {
     color: #FC3B54;
 }
@@ -88,4 +93,10 @@ a.bottomLink:active {
 .go {
     color: #15DE15;
     font-weight: bold;
+}
+
+.pig {
+    position: relative;
+    top: 10px;
+    left: -20px;
 }
