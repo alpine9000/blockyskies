@@ -1,7 +1,8 @@
 installing the cross development environment
 ============================================
 
-Built on OSX 10.11.3
+Built on OSX 10.11.3, should work on any unix environment.
+
 Notes: 
    * My /usr/local is writable by me. You will probable need to add "sudo" to any "make install" lines
    * You can probably install most of this stuff using a package system rather than building from sources
