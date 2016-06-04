@@ -129,11 +129,21 @@ Notes:
     # make install
 ```
 
-11. SOX
+12. SOX
     ```
     # git clone git://sox.git.sourceforge.net/gitroot/sox/sox
     # cd sox
     # autoreconf -i
     # ./configure --prefix=/usr/local
     # make install
+```
+
+13. Up to date vlink
+  ```
+    # curl -O http://sun.hasenbraten.de/vlink/release/vlink.tar.gz
+    # tar zxfv vlink.tar.gz 
+    # cd vlink
+    # mkdir objects
+    # make
+    # cp vlink /usr/local/amiga/bin
 ```
