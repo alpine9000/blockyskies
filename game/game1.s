@@ -1089,6 +1089,12 @@ copyright:
 	dc.b	"SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
 	dc.b	0
 	align 4
+livesCounterText:
+	dc.b	"00"
+livesCounterShortText:
+	dc.b	"00"
+	dc.b	0
+	align	4
 	section .bss	
 foregroundBitplanes1:
 	ds.b	IMAGESIZE*2
@@ -1150,12 +1156,6 @@ pathwayClearPending:
 	dc.w	0	
 foregroundScrollX:
 	dc.l	0
-livesCounterText:
-	dc.b	"00"
-livesCounterShortText:
-	dc.b	"00"
-	dc.b	0
-	align	4	
 stopScrollingPending:
 	dc.w	0
 freezeCountdownCounter:
