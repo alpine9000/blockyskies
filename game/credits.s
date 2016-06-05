@@ -110,11 +110,6 @@ RenderText:
 	bra	.loop	
 .done:
 	move.w	#20,d0
-	move.w	#221,d1
-	lea	moreInfo,a1
-	lea	foregroundBitplanes1,a0
-	jsr	DrawWSMaskedText8
-	move.w	#20,d0
 	move.w	#231,d1
 	lea	copyright,a1
 	lea	foregroundBitplanes1,a0
@@ -159,15 +154,13 @@ credits:
 	dc.b	0
 	dc.b	" "
 	dc.b	0
-	dc.b	"            MORE INFO"
+	dc.b	"        WEB   http://blockyskies.com"
 	dc.b	0
-	dc.b	" "
 	dc.b	0
 	dc.b	0
 	align 	4
 moreInfo:
-	dc.b	"http://alpine9000.github.io/blockyskies"
-	dc.b	0
+
 copyright:
 	dc.b	"Copyright (c) 2016 Enable Software P/L"
 	dc.b	0	
