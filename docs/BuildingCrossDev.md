@@ -148,3 +148,9 @@ Notes:
     # make
     # cp vlink /usr/local/amiga/bin
 ```
+
+14. html2text
+  ```
+    # git clone https://github.com/aaronsw/html2text.git
+    # cp html2text/html2text.py /usr/local/bin
+```

@@ -31,7 +31,7 @@ The game was cross developed on a mac using vasm and vlink as well as a handful 
 
 I made extensive use of my [hacked version of FS-UAE](https://github.com/alpine9000/fs-uae) that allowed me to use the FS-UAE debugger with access to my programs symbols even after booting from the bootblock.
 
-For details on setting up the cross development environment see [here](game/docs/BuildingCrossDev.md)
+For details on setting up the cross development environment see [here](docs/BuildingCrossDev.md)
 
 
 
