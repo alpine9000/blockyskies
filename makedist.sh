@@ -22,9 +22,11 @@ lha -c downloads/BlockySkiesPAL_HardDrive_$1.lha BlockySkies BlockySkies.info
 rm BlockySkies.info
 rm -rf BlockySkies
 rm -f downloads/BlockySkiesPAL_InstallDisk_$1.adf && /usr/local/amiga/amitools/xdftool.py downloads/BlockySkiesPAL_InstallDisk_$1.adf format "BlockySkies" + write game/bin/BlockySkies.info + write game/bin/BlockySkies + write LEGAL.txt
-zip -r downloads/BlockySkiesPAL_InstallDisk_$1.zip downloads/BlockySkiesPAL_InstallDisk_$1.adf
-lha a downloads/BlockySkiesPAL_InstallDisk_$1.lha  downloads/BlockySkiesPAL_InstallDisk_$1.adf
-rm downloads/BlockySkiesPAL_InstallDisk_$1.adf
+cd downloads
+zip -r BlockySkiesPAL_InstallDisk_$1.zip BlockySkiesPAL_InstallDisk_$1.adf
+lha a BlockySkiesPAL_InstallDisk_$1.lha  BlockySkiesPAL_InstallDisk_$1.adf
+rm BlockySkiesPAL_InstallDisk_$1.adf
+cd ..
 rm LEGAL.txt
 rm -rf BlockySkies
 ls -l downloads/BlockySkiesPAL_*$1.???
