@@ -195,6 +195,10 @@ BPLCON1         equ     bplcon1         ;  "         "
 BPLCON2         equ     bplcon2         ;  "         "
 BPL1MOD         equ     bpl1mod         ;  "         "
 BPL2MOD         equ     bpl2mod         ;  "         "
+BPLCON3		equ	$106
+BPLCON4		equ	$10C
+FMODE		equ	$1FC
+DIWHIGH		equ	$1e4
 
 DPL1DATA        equ     bpldat+$00
 DPL2DATA        equ     bpldat+$02

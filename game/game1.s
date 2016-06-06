@@ -73,8 +73,11 @@ Entry2:
 	move.w	d0,$9C(a6)	; Clear all INT requests
 	move.w	d0,$9C(a6)	; Clear all INT requests	
 
-	move.w	#$0C00,$106(a6) ;BPLCON3
-	move.w	#$0011,$10C(a6) ;BPLCON4	
+	;; AGA compatibility stuff
+	move.w	#$0,FMODE(a6)
+	move.w	#$0024,BPLCON2(a6)
+	move.w	#$0C00,BPLCON3(a6)
+	move.w	#$0011,BPLCON4(a6)   
 	
 	lea	Level3InterruptHandler,a3
  	move.l	a3,LVL3_INT_VECTOR
