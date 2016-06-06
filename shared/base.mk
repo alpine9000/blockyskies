@@ -63,7 +63,7 @@ ifndef LINKER_OPTIONS
 LINKER_OPTIONS=-Ttext 0x$(BASE_ADDRESS)
 endif
 
-all: bin out $(MAKEADF) $(IMAGECON) $(MAPGEN) $(FADE) $(CROPPA) $(RESIZE) $(FLOPPY)
+all: bin out $(MAKEADF) $(IMAGECON) $(MAPGEN) $(FADE) $(CROPPA) $(RESIZE) $(FLOPPY) bin/BlockySkies
 
 gdrive: all
 	cp $(FLOPPY) ~/Google\ Drive
@@ -85,6 +85,8 @@ bin:
 
 out:
 	mkdir out
+	mkdir out/adf
+	mkdir out/workbench
 
 ic:
 	make -C $(IMAGECONDIR)
@@ -123,25 +125,34 @@ out/bootblock.bin: out/bootblock.o
 out/bootblock.o: $(BOOTBLOCK_ASM) $(PROGRAM_BIN)
 	vasmm68k_mot $(VASM_ARGS) $(VASM_EXTRA_BOOTBLOCK_ARGS) -DUSERSTACK_ADDRESS="\$$$(USERSTACK_ADDRESS)" -DBASE_ADDRESS="\$$$(BASE_ADDRESS)"  $< -o $@ -I/usr/local/amiga/os-include
 
-out/main.o: $(MODULE) $(EXTRA)
-	vasmm68k_mot $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
-	@vasmm68k_mot -depend=make $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > $*.d
+out/adf/main.o: $(MODULE) $(EXTRA)
+	vasmm68k_mot  -DTRACKLOADER=1  $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
+	@vasmm68k_mot -depend=make -DTRACKLOADER=1 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > $*.d
 
-out/%.o: %.s
-	vasmm68k_mot $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
-	@vasmm68k_mot -depend=make $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > out/$*.d
+out/workbench/main.o: $(MODULE) $(EXTRA)
+	vasmm68k_mot  -DTRACKLOADER=0 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
+	@vasmm68k_mot -depend=make -DTRACKLOADER=0 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > $*.d
+
+out/adf/%.o: %.s
+	vasmm68k_mot $(VASM_ARGS)  -DTRACKLOADER=1 $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
+	@vasmm68k_mot -depend=make -DTRACKLOADER=1 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > out/$*.d
+
+out/workbench/%.o: %.s
+	vasmm68k_mot  -DTRACKLOADER=0 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
+	@vasmm68k_mot -depend=make  -DTRACKLOADER=1 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > out/$*.d
 
 out/%.o: %.c
 	vc -O3 -c $< -o $@
 	-@vc -O3 -S $< -o out/$*.s > /dev/null 2> /dev/null
 	-@vc -O0 -S $< -o out/$*-noopt.s > /dev/null 2> /dev/null
 
-ALL_OBJS=out/main.o $(OBJS)
+ALL_OBJS=out/adf/main.o $(ADF_OBJS)
+ALL_WORKBENCH_OBJS=out/workbench/main.o $(WORKBENCH_OBJS)
 ALL_DEPENDS=$(ALL_OBJS:.o=.d)
 
-out/main.bin: out/main.o $(OBJS)
-	vlink $(LINKER_OPTIONS)  -brawbin1 $< $(OBJS) -o $@
-	@vlink $(LINKER_OPTIONS) -brawbin1 $< $(OBJS) -M -o /tmp/main.bin | grep ", value " | cut -d " " -f3,7 | cut -d "," -f1 > $@.symbols
+out/main.bin: out/adf/main.o $(ADF_OBJS)
+	vlink $(LINKER_OPTIONS)  -brawbin1 $< $(ADF_OBJS) -o $@
+	@vlink $(LINKER_OPTIONS) -brawbin1 $< $(ADF_OBJS) -M -o /tmp/main.bin | grep ", value " | cut -d " " -f3,7 | cut -d "," -f1 > $@.symbols
 	@cp $@.symbols ~/Projects/amiga/debugger.syms
 	@echo "RAM USAGE:" $$((16#`cat ~/Projects/amiga/debugger.syms | grep endRam | sed 's/0x//' | sed 's/endRam: //'`)) bytes
 

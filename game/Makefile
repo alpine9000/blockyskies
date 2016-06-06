@@ -1,5 +1,4 @@
 TEST_VERSION=1
-TRACKLOADER=1
 EXAMPLE_NAME=game1
 BACKGROUND_COLOR=09e
 BACKGROUND_GREY_COLOR=777
@@ -18,7 +17,9 @@ BASE_ADDRESS=4000
 # note: this must be high enough not to conflict with MFMbufE
 
 BOOTBLOCK_ASM=alpine_bootblock.s
-OBJS=out/init.o out/utils.o out/image.o out/blit.o out/joystick.o out/player.o out/items.o out/blitmtext.o out/blitmtext85.o  out/blittext.o out/music.o out/P6112-Play.o out/splash.o out/background.o out/sound.o out/trackloader.o out/disk.o out/counter.o out/map.o out/message.o out/menu.o out/credits.o out/bob.o out/pickups.o out/highscore.o
+SRCS=init.s utils.s image.s blit.s joystick.s player.s items.s blitmtext.s blitmtext85.s  blittext.s music.s P6112-Play.s splash.s background.s sound.s trackloader.s disk.s counter.s map.s message.s menu.s credits.s bob.s pickups.s highscore.s
+ADF_OBJS=$(addprefix out/adf/, $(SRCS:.s=.o))
+WORKBENCH_OBJS=$(addprefix out/workbench/, $(SRCS:.s=.o))
 
 IMAGES=foreground.png \
 	background.png \
@@ -97,9 +98,33 @@ IMAGES=foreground.png \
 
 IMAGEDATA=$(addprefix out/, $(IMAGES:.png=.bin))
 
-VASM_EXTRA_ARGS=-DSFX=1 -DMAX_P61_SIZE=$(MAX_P61_SIZE) -allmp -DTRACKLOADER=$(TRACKLOADER) -DTEST_VERSION=$(TEST_VERSION)
+VASM_EXTRA_ARGS=-DSFX=1 -DMAX_P61_SIZE=$(MAX_P61_SIZE) -allmp -DTEST_VERSION=$(TEST_VERSION)
 
 LINKER_OPTIONS=-T link.script.x
+
+
+ASSETS=$(IMAGEDATA) \
+	out/level91_foreground-map.s\
+	out/level92_foreground-map.s\
+	out/level93_foreground-map.s\
+	out/level94_foreground-map.s\
+	out/level95_foreground-map.s\
+	out/level96_foreground-map.s\
+	out/level97_foreground-map.s\
+	out/level1_foreground-map.s\
+	out/level2_foreground-map.s\
+	out/level3_foreground-map.s\
+	out/level4_foreground-map.s\
+	out/level5_foreground-map.s\
+	out/level6_foreground-map.s\
+	out/background-map.s  Makefile link.script.x\
+	out/menu-palette.s\
+	out/paletteA_playarea_fade.s out/paletteA_flags_fade.s out/paletteA_foreground-palette-table.s out/paletteA_tileFade.s\
+	out/paletteB_playarea_fade.s out/paletteB_flags_fade.s out/paletteB_foreground-palette-table.s out/paletteB_tileFade.s\
+	out/paletteC_playarea_fade.s out/paletteC_flags_fade.s out/paletteC_foreground-palette-table.s out/paletteC_tileFade.s\
+	out/paletteD_playarea_fade.s out/paletteD_flags_fade.s out/paletteD_foreground-palette-table.s out/paletteD_tileFade.s\
+	out/paletteE_playarea_fade.s out/paletteE_flags_fade.s out/paletteE_foreground-palette-table.s out/paletteE_tileFade.s\
+	out/panelFade.s out/jump.raw out/falling.raw out/chaching.raw out/whoosh.raw out/yay.raw
 
 include ../shared/base.mk
 
@@ -299,36 +324,16 @@ out/credits_copperlist.i: credits_copper.c
 	gcc credits_copper.c -o out/credits_copper
 	out/credits_copper > out/credits_copperlist.i
 
-out/credits.o:	out/credits_copperlist.i
-
-out/main.o: $(IMAGEDATA) \
-	out/level91_foreground-map.s\
-	out/level92_foreground-map.s\
-	out/level93_foreground-map.s\
-	out/level94_foreground-map.s\
-	out/level95_foreground-map.s\
-	out/level96_foreground-map.s\
-	out/level97_foreground-map.s\
-	out/level1_foreground-map.s\
-	out/level2_foreground-map.s\
-	out/level3_foreground-map.s\
-	out/level4_foreground-map.s\
-	out/level5_foreground-map.s\
-	out/level6_foreground-map.s\
-	out/background-map.s  Makefile link.script.x\
-	out/menu-palette.s\
-	out/paletteA_playarea_fade.s out/paletteA_flags_fade.s out/paletteA_foreground-palette-table.s out/paletteA_tileFade.s\
-	out/paletteB_playarea_fade.s out/paletteB_flags_fade.s out/paletteB_foreground-palette-table.s out/paletteB_tileFade.s\
-	out/paletteC_playarea_fade.s out/paletteC_flags_fade.s out/paletteC_foreground-palette-table.s out/paletteC_tileFade.s\
-	out/paletteD_playarea_fade.s out/paletteD_flags_fade.s out/paletteD_foreground-palette-table.s out/paletteD_tileFade.s\
-	out/paletteE_playarea_fade.s out/paletteE_flags_fade.s out/paletteE_foreground-palette-table.s out/paletteE_tileFade.s\
-	out/panelFade.s out/jump.raw out/falling.raw out/chaching.raw out/whoosh.raw out/yay.raw
+out/adf/credits.o:	out/credits_copperlist.i
 
 
-bin/BlockySkies:  $(ALL_OBJS) 
-	vlink	-hunkattr DATA=2 -hunkattr CODE=2 -hunkattr .text=2 -hunkattr .code=2 -hunkattr .data=2	-hunkattr .noload=2 -hunkattr .bss=2 $(ALL_OBJS) -o $@
+out/adf/main.o: $(ASSETS)
+
+bin/BlockySkies:  $(ALL_WORKBENCH_OBJS) 
+	vlink	-hunkattr DATA=2 -hunkattr CODE=2 -hunkattr .text=2 -hunkattr .code=2 -hunkattr .data=2	-hunkattr .noload=2 -hunkattr .bss=2 $(ALL_WORKBENCH_OBJS) -o $@
 	cp $@ ~/A1200
 	cp $@ ~/A4000
+	cp assets/BlockySkies.info bin
 	cp assets/BlockySkies.info ~/A1200
 	cp assets/BlockySkies.info ~/A4000
 	ls -lh bin/BlockySkies
@@ -339,15 +344,8 @@ bin/BlockySkies:  $(ALL_OBJS)
 	lha -c bin/BlockySkies.lha BlockySkies BlockySkies.info
 	-@rm BlockySkies.info
 	-@rm -rf BlockySkies
-	rm -f bin/BlockySkiesInstall.adf && ../tools/external/amitools/xdftool.py bin/BlockySkiesInstall.adf format "BlockySkies" + write assets/BlockySkies.info + write bin/BlockySkies
+	rm -f bin/BlockySkiesInstall.adf && /usr/local/amiga/amitools/xdftool.py bin/BlockySkiesInstall.adf format "BlockySkies" + write assets/BlockySkies.info + write bin/BlockySkies
 	ls -lh bin/BlockySkies*
 
 
-.PHONY:	wipe
-wipe:	clean
-	mkdir bin
-	mkdir out
-	make TRACKLOADER=0 bin/BlockySkies
-
-.PHONY:	wb
-wb: wipe bin/BlockySkies
+wb: bin/BlockySkies
