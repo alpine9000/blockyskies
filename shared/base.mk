@@ -63,7 +63,9 @@ ifndef LINKER_OPTIONS
 LINKER_OPTIONS=-Ttext 0x$(BASE_ADDRESS)
 endif
 
-all: bin out $(MAKEADF) $(IMAGECON) $(MAPGEN) $(FADE) $(CROPPA) $(RESIZE) $(FLOPPY) bin/BlockySkies
+adf: bin out  $(MAKEADF) $(IMAGECON) $(MAPGEN) $(FADE) $(CROPPA) $(RESIZE) $(FLOPPY)
+
+all: adf bin/BlockySkies
 
 gdrive: all
 	cp $(FLOPPY) ~/Google\ Drive
