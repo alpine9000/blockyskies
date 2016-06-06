@@ -154,7 +154,7 @@ credits:
 	dc.b	0
 	dc.b	" "
 	dc.b	0
-	dc.b	"        WEB   http://blockyskies.com"
+	dc.b	"  MORE INFO   http://blockyskies.com"
 	dc.b	0
 	dc.b	0
 	dc.b	0

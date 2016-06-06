@@ -63,7 +63,9 @@ ifndef LINKER_OPTIONS
 LINKER_OPTIONS=-Ttext 0x$(BASE_ADDRESS)
 endif
 
-adf: bin out  $(MAKEADF) $(IMAGECON) $(MAPGEN) $(FADE) $(CROPPA) $(RESIZE) $(FLOPPY)
+ALL_TOOLS=$(MAKEADF) $(IMAGECON) $(MAPGEN) $(FADE) $(CROPPA) $(RESIZE)
+
+adf: bin out $(ALL_TOOLS) $(FLOPPY)
 
 all: adf bin/BlockySkies
 
