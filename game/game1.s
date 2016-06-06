@@ -495,7 +495,7 @@ RenderNextForegroundFrame:
 	lsr.l	#1,d0
 	and.b   #$f0,d0
 	add.l	d0,a2		
-	move.l	0,d3
+	move.l	#0,d3
 .loop:
 	move.l	d3,d2
 	bsr	RenderForegroundTile
