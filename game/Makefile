@@ -334,6 +334,7 @@ bin/BlockySkies:  $(ALL_WORKBENCH_OBJS)
 	cp $@ ~/A1200
 	cp $@ ~/A4000
 	cp assets/BlockySkies.info bin
+	cp assets/BlockySkiesDrawer.info bin
 	cp assets/BlockySkies.info ~/A1200
 	cp assets/BlockySkies.info ~/A4000
 	ls -lh bin/BlockySkies
