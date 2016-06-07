@@ -122,7 +122,7 @@ RenderMenu:
 MenuUp:
 	cmp.l	#playTopColor,selectedPtr
 	beq	.done
-	PlaySound Jump
+	PlaySound Menu
 	move.l	selectedPtr,a0
 	move.w 	#MENU_TEXT_COLOR,(a0)
 	add.l	#MENU_BOTTOM_OFFSET,a0
@@ -142,7 +142,7 @@ MenuDown:
 	cmp.l	#creditsTopColor,selectedPtr	
 	endif
 	beq	.done
-	PlaySound Jump		
+	PlaySound Menu
 	move.l	selectedPtr,a0
 	move.w 	#MENU_TEXT_COLOR,(a0)
 	add.l	#MENU_BOTTOM_OFFSET,a0
@@ -176,7 +176,7 @@ ToggleMusic:
 	rts
 
 ToggleDifficulty:
-	PlaySound Jump
+	PlaySound Menu
 	add.l	#4,nextLevelInstaller
 	lea	levelCounter,a0
 	jsr	IncrementCounter
@@ -215,7 +215,7 @@ ButtonPressed:
 	bsr	ToggleMusic
 	bra	.done
 .creditsButton:
-	PlaySound Jump	
+	PlaySound Menu
 	jsr	Credits
 	bra	ReShowMenu
 .done:

@@ -30,6 +30,7 @@ PlayNextSound:
 	rts	
 
 	if SFX=1
+	xdef	PlayMenuSound
 	xdef	PlayJumpSound
 	xdef	PlayFallingSound
 	xdef    PlayChachingSound
@@ -52,6 +53,21 @@ PlayJumpSound:
 .skip:
 	move.l	(sp)+,d0
 	rts
+
+
+PlayMenuSound:
+	move.l	d0,-(sp)
+	KillSound
+	move.w	#0,dontKillSound
+	lea     jump(pc),a1
+        move.l  a1,AUD3LCH(a6)
+        move.w  #123,AUD3PER(a6)
+        move.w  #64,AUD3VOL(a6)
+	move.w  #(endJump-jump)/2,AUD3LEN(a6) ;Set length in words
+	move.w	#(DMAF_AUD3|DMAF_SETCLR),DMACON(a6)
+	move.l	(sp)+,d0
+	rts
+
 
 PlayWhooshSound:
 	move.l	d0,-(sp)
@@ -124,7 +140,8 @@ PlayBonusSound:
         move.w  #64,AUD3VOL(a6) 
 	move.w  #(endYay-yay)/2,AUD3LEN(a6) ;Set length in words
 	move.w	#(DMAF_AUD3|DMAF_SETCLR),DMACON(a6)
-	rts	
+	rts
+
 
 	align	4
 jump:

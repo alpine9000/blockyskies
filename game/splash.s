@@ -100,6 +100,7 @@ ShowSplash:
 .wait:
 	jsr	WaitVerticalBlank
 	jsr	WaitForJoystick
+	PlaySound Menu
 	rts
 
 

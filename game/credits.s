@@ -88,7 +88,7 @@ Credits:
 	move.l	a0,COP1LC(a6)	
 	
 	jsr	WaitForJoystick
-	PlaySound Jump	
+	PlaySound Menu
 	
 	rts
 

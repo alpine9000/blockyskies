@@ -64,6 +64,7 @@ ShowHighScore:
 
 	bsr	RenderHighScore
 	jsr	WaitForJoystick
+	PlaySound Menu
 	jmp	ShowMenu
 
 
