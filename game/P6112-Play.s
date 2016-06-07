@@ -920,12 +920,13 @@ P61_gene:
 	move #$2000,$9a-C(a6)		;old timerb OFF
 	lea $bfd000,a0
 	lea P61_timers(pc),a1
-	move.b #$7f,$d00(a0)
 
 	ifne p61cia			;only affect cia if actually used
+	move.b #$7f,$d00(a0)
 	move.b #$10,$e00(a0)
-	endc
 	move.b #$10,$f00(a0)
+	endc
+
 	ifne p61cia
 	move.b $400(a0),(a1)+
 	move.b $500(a0),(a1)+
