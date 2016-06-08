@@ -129,7 +129,7 @@ splashInvalid:
 	dc.w	1
 	align 4
 versionText:
-	dc.b	"TEST VERSION 3"
+	dc.b	"TEST VERSION 4"
 	dc.b	0
 	align 4
 	
