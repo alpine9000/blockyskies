@@ -1,4 +1,4 @@
-
+	xdef vectorBase
 	if TRACKLOADER=0
 ; from Photon http://coppershade.org/asmskool/SOURCES/Developing-Demo-Effects/DDE2/Coppershade-DDE2/PhotonsMiniWrapper1.04!.S	
 StartupFromOS:			
@@ -8,6 +8,8 @@ StartupFromOS:
 	beq.s 	.yes68k
 	lea 	GetVBR(PC),a5	;else fetch vector base address to a4:
 	jsr 	-30(a6)		;enter Supervisor mode
+	move.l	a4,vectorBase
+	move.l	a4,P61_VBR
 
 	    *--- save view+coppers ---*
 
@@ -103,3 +105,6 @@ WaitBlitter:			;wait until blitter is finished
 	bne.s 	.loop
 	rts
 	endif
+
+vectorBase:
+	dc.l	0

@@ -80,7 +80,8 @@ Entry2:
 	move.w	#$0011,BPLCON4(a6)   
 	
 	lea	Level3InterruptHandler,a3
- 	move.l	a3,LVL3_INT_VECTOR
+	move.l	vectorBase,a0
+ 	move.l	a3,LVL3_INT_VECTOR(a0)
 
 	move.w	#0,d0
 	jsr	StartMusic
