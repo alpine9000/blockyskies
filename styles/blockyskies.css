@@ -96,6 +96,7 @@ a.bottomLink:active {
    width: 600px;
    display: inline-block;
    text-align: center;
+   margin-bottom: 0.5em;
 }
 
 .danger {
