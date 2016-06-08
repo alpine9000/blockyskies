@@ -85,6 +85,14 @@ a.bottomLink:active {
    text-align: left;
 }
 
+.footer {
+   margin-left: 0.5em;
+   margin-right: 0.5em;
+   width: 600px;
+   display: inline-block;
+   text-align: center;
+}
+
 .danger {
    color: red;
    font-weight: bold;
