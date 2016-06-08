@@ -36,8 +36,11 @@ a:active {
 }
 
 a.download {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 a.download:link {
@@ -57,8 +60,14 @@ a.download:active {
 }
 
 a.bottomLink {
-   margin-right: 1em;
-   margin-left: 1em;
+   display: inline-block;	  
+   width: 6em;
+   padding-left: 1em;
+   padding-right: 1em;   
+   text-align: center;
+   width: 33%;
+   padding-left: 0px;	
+   padding-right: 0px;	
 }
 
 a.bottomLink:link {
@@ -78,16 +87,12 @@ a.bottomLink:active {
 }
 
 .main {
-   margin-left: 0.5em;
-   margin-right: 0.5em;
    width: 600px;
    display: inline-block;
    text-align: left;
 }
 
 .footer {
-   margin-left: 0.5em;
-   margin-right: 0.5em;
    width: 600px;
    display: inline-block;
    text-align: center;
@@ -98,9 +103,13 @@ a.bottomLink:active {
    font-weight: bold;
 }
 
-.go {
+.good {
     color: #15DE15;
     font-weight: bold;
+}
+
+.centered {
+    text-align: center;
 }
 
 .pig {
