@@ -340,15 +340,5 @@ bin/BlockySkies: bin out $(ALL_TOOLS)  $(ALL_WORKBENCH_OBJS)
 	cp assets/BlockySkies.info ~/A1200
 	cp assets/BlockySkies.info ~/A4000
 	ls -lh bin/BlockySkies
-	-mkdir BlockySkies
-	cp assets/BlockySkiesDrawer.info BlockySkies.info
-	cp bin/BlockySkies BlockySkies
-	cp assets/BlockySkies.info BlockySkies
-	lha -c bin/BlockySkies.lha BlockySkies BlockySkies.info
-	-@rm BlockySkies.info
-	-@rm -rf BlockySkies
-	rm -f bin/BlockySkiesInstall.adf && /usr/local/amiga/amitools/xdftool.py bin/BlockySkiesInstall.adf format "BlockySkies" + write assets/BlockySkies.info + write bin/BlockySkies
-	ls -lh bin/BlockySkies*
-
 
 wb: bin/BlockySkies
