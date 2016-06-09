@@ -17,15 +17,18 @@ StartupFromOS:
 	lea 	GfxLib(PC),a1 	;either way return to here and open
 	jsr 	-408(a6)	;graphics library
 	tst.l 	d0		;if not OK,
-	beq.s 	quit		;exit program.
+	beq 	quit		;exit program.
 	move.l 	d0,a5		;a5=gfxbase
 
 	bsr	SaveSystemClock
 
-	move.l 	a5,a6
-	move.l 	34(a6),-(sp)
+	move.l 	a5,a6		;gfxbase -> a6
+	move.l 	34(a6),-(sp)    ;save old view ?
 	sub.l 	a1,a1		;blank screen to trigger screen switch
 	jsr 	-222(a6)	;on Amigas with graphics cards
+	jsr 	-270(a6)    	;WaitTOF
+	jsr 	-270(a6)    	;WaitTOF
+	jsr 	-456(a6)    	;OwnBlitter
 
 	    *--- save int+dma ---*
 
@@ -62,9 +65,13 @@ LongJump:
 
 	bsr	RestoreSystemClock
 
-	move.l 	a5,a6
-	move.l 	(sp)+,a1
+	move.l 	a5,a6          	;gfxbase -> a6
+	move.l 	(sp)+,a1        ;previously saved view
 	jsr 	-222(a6)	;restore OS screen
+	jsr 	-270(a6)       	;WaitTOF
+	jsr 	-270(a6)        ;WaitTOF
+	jsr 	-228(a6)        ;WaitBlit
+	jsr 	-462(a6)        ;DisownBlitter
 
 	    *--- close lib+exit ---*
 
