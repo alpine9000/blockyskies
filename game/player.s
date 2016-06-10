@@ -344,9 +344,9 @@ InstallRobotColorPalette:
 
 InstallSilverRobotColorPalette:
 	move.w #$000,COLOR16(a6)
-	move.w #$ddd,COLOR17(a6)
-	move.w #$777,COLOR18(a6)
-	move.w #$999,COLOR19(a6)
+	move.w #$bbb,COLOR17(a6)
+	move.w #$999,COLOR18(a6)
+	move.w #$aaa,COLOR19(a6)
 	rts	
 
 InstallTankColorPalette:	
