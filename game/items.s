@@ -260,7 +260,7 @@ _SetupItemSpriteData:
 .c1:
 
 	
-	sub.l	d3,a0	;#1*ITEM_SPRITE_VERTICAL_BYTES,a0 or 0 for bee
+	suba.w	d3,a0	;#1*ITEM_SPRITE_VERTICAL_BYTES,a0 or 0 for bee
 	cmp.l   #itemEye,a1	
 	beq	.eyeSprite
 	cmp.l   #itemClock,a1	
