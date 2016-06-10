@@ -266,6 +266,16 @@ PostCheckPlayerMiss:
 
 	
 	jsr	PlayNextSound
+
+	;; this is for the case when running in a fastest possible winuae config
+	;; and we get to this point before the new frame has started
+	;; I don't know if this is possible on a read amiga running from chip ram
+.superFastCpuHack:
+	move.l	$dff004,d0
+	and.l	#$1ff00,d0
+	cmp.l	#304<<8,d0
+	bge	.superFastCpuHack
+
 	jsr	PrepareItemSpriteData
 	jsr	FlashPickup
 
