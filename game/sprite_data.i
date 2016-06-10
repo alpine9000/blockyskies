@@ -166,6 +166,90 @@ spriteCowRightJump:
 	dc.w	0,0
 	incbin	"out/sprite_cow-2.bin" ; 7, right jump
 	dc.l	0
+
+spritePumpkin:
+spritePumpkinUp:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-1.bin" ; 0, up
+	dc.l	0
+spritePumpkinUpJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-0.bin" ; 1, up jump
+	dc.l	0		
+spritePumpkinDown:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-5.bin" ; 2, down
+	dc.l	0
+spritePumpkinDownJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-4.bin" ; 3, down jump
+	dc.l	0		
+spritePumpkinLeft:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-7.bin" ; 4, left
+	dc.l	0
+spritePumpkinLeftJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-6.bin" ; 5, left jump
+	dc.l	0		
+spritePumpkinRight:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-3.bin" ; 6, right
+	dc.l	0
+spritePumpkinRightJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_pumpkin-2.bin" ; 7, right jump
+	dc.l	0
+
+spriteCroc:
+spriteCrocUp:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-1.bin" ; 0, up
+	dc.l	0
+spriteCrocUpJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-0.bin" ; 1, up jump
+	dc.l	0		
+spriteCrocDown:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-5.bin" ; 2, down
+	dc.l	0
+spriteCrocDownJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-4.bin" ; 3, down jump
+	dc.l	0		
+spriteCrocLeft:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-7.bin" ; 4, left
+	dc.l	0
+spriteCrocLeftJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-6.bin" ; 5, left jump
+	dc.l	0		
+spriteCrocRight:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-3.bin" ; 6, right
+	dc.l	0
+spriteCrocRightJump:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_croc-2.bin" ; 7, right jump
+	dc.l	0
 	
 spriteFalling0:
 	dc.w	0,0
@@ -273,3 +357,59 @@ spriteFallingCow4:
 	dc.w	0,0
 	incbin	"out/sprite_fallingCow-4.bin" 
 	dc.l	0
+
+
+spriteFallingPumpkin0:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingPumpkin-0.bin" 
+	dc.l	0
+spriteFallingPumpkin1:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingPumpkin-1.bin" 
+	dc.l	0
+spriteFallingPumpkin2:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingPumpkin-2.bin" 
+	dc.l	0
+spriteFallingPumpkin3:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingPumpkin-3.bin" 
+	dc.l	0
+spriteFallingPumpkin4:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingPumpkin-4.bin" 
+	dc.l	0
+
+
+
+SpritefallingCroc0:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingCroc-0.bin" 
+	dc.l	0
+spriteFallingCroc1:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingCroc-1.bin" 
+	dc.l	0
+spriteFallingCroc2:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingCroc-2.bin" 
+	dc.l	0
+spriteFallingCroc3:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingCroc-3.bin" 
+	dc.l	0
+spriteFallingCroc4:
+	dc.w	0,0
+	dc.w	0,0
+	incbin	"out/sprite_fallingCroc-4.bin" 
+	dc.l	0
+

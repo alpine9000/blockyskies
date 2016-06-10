@@ -26,8 +26,11 @@
 	xdef playerLevelMissPixels
 
 	xdef pigPlayerSpriteConfig
-	xdef cowPlayerSpriteConfig	
+	xdef cowPlayerSpriteConfig
+	xdef pumpkinPlayerSpriteConfig	
+	xdef crocPlayerSpriteConfig	
 	xdef robotPlayerSpriteConfig
+	xdef silverRobotPlayerSpriteConfig	
 	xdef tankPlayerSpriteConfig
 	xdef playerSpriteConfig
 	
@@ -325,11 +328,26 @@ InstallPigColorPalette:
 
 InstallCowColorPalette:	
 	include "out/sprite_cow-0-palette.s"
+	rts
+
+InstallPumpkinColorPalette:	
+	include "out/sprite_pumpkin-0-palette.s"
+	rts	
+
+InstallCrocColorPalette:	
+	include "out/sprite_croc-0-palette.s"
 	rts	
 
 InstallRobotColorPalette:	
 	include "out/sprite_robot-0-palette.s"
 	rts
+
+InstallSilverRobotColorPalette:
+	move.w #$000,COLOR16(a6)
+	move.w #$ddd,COLOR17(a6)
+	move.w #$777,COLOR18(a6)
+	move.w #$999,COLOR19(a6)
+	rts	
 
 InstallTankColorPalette:	
 	include "out/sprite_tank-0-palette.s"
@@ -652,12 +670,27 @@ pigPlayerSpriteConfig:
 cowPlayerSpriteConfig:
 	dc.l	InstallCowColorPalette
 	dc.l	spriteCow
-	dc.l	spriteFallingCow1	
+	dc.l	spriteFallingCow1
+
+pumpkinPlayerSpriteConfig:
+	dc.l	InstallPumpkinColorPalette
+	dc.l	spritePumpkin
+	dc.l	spriteFallingPumpkin1	
+
+crocPlayerSpriteConfig:
+	dc.l	InstallCrocColorPalette
+	dc.l	spriteCroc
+	dc.l	spriteFallingCroc1	
 
 robotPlayerSpriteConfig:
 	dc.l	InstallRobotColorPalette
 	dc.l	spriteRobot
 	dc.l	spriteFallingRobot1
+
+silverRobotPlayerSpriteConfig:
+	dc.l	InstallSilverRobotColorPalette
+	dc.l	spriteRobot
+	dc.l	spriteFallingRobot1	
 
 tankPlayerSpriteConfig:
 	dc.l	InstallTankColorPalette

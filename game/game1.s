@@ -913,10 +913,10 @@ BlitCountdown:
 	Level	1,"WELCOME TO BLOCKY SKIES!",70,2*2,12,10,"STAY TUNED FOR THE FULL RELEASE!!",A,99,0,1,pig,1,1
 	Level	2,"HAVING FUN YET?",70,2*2,12,10,"LEVEL 2",B,98,2,0,robot,1,1
 	if TEST_VERSION=0	
-	Level	3,"GIDDY UP!",50,4*2,8,6,"GETTING FASTER!, LEVEL 3 COMPLETE!",C,98,2,0,pig,1,1
+	Level	3,"GIDDY UP!",50,4*2,8,6,"GETTING FASTER!, LEVEL 3 COMPLETE!",C,98,2,0,silverRobot,1,1
 	Level	4,"MOO!",75,4*2,8,6,"ALRIGHT! LEVEL 4 COMPLETE!!",E,99,2,0,cow,2,3
 	Level	5,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 5 COMPLETE!",D,99,1,0,tank,1,1
-	Level	6,"WHAT? WHAT?!",50,4*2,8,6,"NICE! LEVEL 6 COMPLETE!",A,98,1,0,cow,2,2
+	Level	6,"WHAT? WHAT?!",50,4*2,8,6,"NICE! LEVEL 6 COMPLETE!",F,98,1,0,croc,2,2
 	endif
 
 
@@ -924,7 +924,8 @@ BlitCountdown:
 	Palette	B
 	Palette	C
 	Palette	D
-	Palette	E	
+	Palette	E
+	Palette	F
 
 levelData:
 	ds.b	(level2End-level2Start)+1024

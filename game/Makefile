@@ -1,4 +1,4 @@
-TEST_VERSION=1
+TEST_VERSION=0
 EXAMPLE_NAME=game1
 BACKGROUND_COLOR=09e
 BACKGROUND_GREY_COLOR=777
@@ -7,6 +7,7 @@ paletteB_BACKGROUND_COLOR_LONG=000 000 102 187
 paletteC_BACKGROUND_COLOR_LONG=210 002 053 255
 paletteD_BACKGROUND_COLOR_LONG=134 134 134 255
 paletteE_BACKGROUND_COLOR_LONG=000 153 238 255
+paletteF_BACKGROUND_COLOR_LONG=096 135 240 255
 
 MAX_P61_SIZE=$(shell ls -Sl assets/P61.* | awk '{print $$5}' | head -1)
 
@@ -58,6 +59,22 @@ IMAGES=foreground.png \
 	sprite_cow-5.png \
 	sprite_cow-6.png \
 	sprite_cow-7.png \
+	sprite_pumpkin-0.png \
+	sprite_pumpkin-1.png \
+	sprite_pumpkin-2.png \
+	sprite_pumpkin-3.png \
+	sprite_pumpkin-4.png \
+	sprite_pumpkin-5.png \
+	sprite_pumpkin-6.png \
+	sprite_pumpkin-7.png \
+	sprite_croc-0.png \
+	sprite_croc-1.png \
+	sprite_croc-2.png \
+	sprite_croc-3.png \
+	sprite_croc-4.png \
+	sprite_croc-5.png \
+	sprite_croc-6.png \
+	sprite_croc-7.png \
 	sprite_coin-0.png \
 	sprite_coin-1.png \
 	sprite_coin-2.png \
@@ -76,6 +93,16 @@ IMAGES=foreground.png \
 	sprite_fallingCow-2.png \
 	sprite_fallingCow-3.png \
 	sprite_fallingCow-4.png \
+	sprite_fallingPumpkin-0.png \
+	sprite_fallingPumpkin-1.png \
+	sprite_fallingPumpkin-2.png \
+	sprite_fallingPumpkin-3.png \
+	sprite_fallingPumpkin-4.png \
+	sprite_fallingCroc-0.png \
+	sprite_fallingCroc-1.png \
+	sprite_fallingCroc-2.png \
+	sprite_fallingCroc-3.png \
+	sprite_fallingCroc-4.png \
 	sprite_fallingRobot-0.png \
 	sprite_fallingRobot-1.png \
 	sprite_fallingRobot-2.png \
@@ -124,6 +151,7 @@ ASSETS=$(IMAGEDATA) \
 	out/paletteC_playarea_fade.s out/paletteC_flags_fade.s out/paletteC_foreground-palette-table.s out/paletteC_tileFade.s\
 	out/paletteD_playarea_fade.s out/paletteD_flags_fade.s out/paletteD_foreground-palette-table.s out/paletteD_tileFade.s\
 	out/paletteE_playarea_fade.s out/paletteE_flags_fade.s out/paletteE_foreground-palette-table.s out/paletteE_tileFade.s\
+	out/paletteF_playarea_fade.s out/paletteF_flags_fade.s out/paletteF_foreground-palette-table.s out/paletteF_tileFade.s\
 	out/panelFade.s out/jump.raw out/falling.raw out/chaching.raw out/whoosh.raw out/yay.raw
 
 include ../shared/base.mk
@@ -173,6 +201,12 @@ out/sprite_pig-%.bin: out/sprite_pig-%.png
 out/sprite_cow-%.bin: out/sprite_cow-%.png
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_cow-$* --palette-offset 16 --use-palette=assets/cow.pal
 
+out/sprite_pumpkin-%.bin: out/sprite_pumpkin-%.png
+	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_pumpkin-$* --palette-offset 16 --use-palette=assets/pumpkin.pal
+
+out/sprite_croc-%.bin: out/sprite_croc-%.png
+	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_croc-$* --palette-offset 16 --use-palette=assets/croc.pal
+
 out/sprite_robot-%.bin: out/sprite_robot-%.png
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_robot-$* --palette-offset 16 --use-palette=assets/robot.pal
 
@@ -185,6 +219,12 @@ out/sprite_fallingPig-%.bin: out/sprite_fallingPig-%.png
 
 out/sprite_fallingCow-%.bin: out/sprite_fallingCow-%.png
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingCow-$* --palette-offset 16 --use-palette=assets/cow.pal
+
+out/sprite_fallingPumpkin-%.bin: out/sprite_fallingPumpkin-%.png
+	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingPumpkin-$* --palette-offset 16 --use-palette=assets/pumpkin.pal
+
+out/sprite_fallingCroc-%.bin: out/sprite_fallingCroc-%.png
+	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingCroc-$* --palette-offset 16 --use-palette=assets/croc.pal
 
 out/sprite_fallingRobot-%.bin: out/sprite_fallingRobot-%.png
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingRobot-$* --palette-offset 16 --use-palette=assets/robot.pal
@@ -214,7 +254,15 @@ out/sprite_pig%.png: assets/assets.png
 
 .SECONDARY:
 out/sprite_cow%.png: assets/assets.png
-	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_cow --width=16 --height=16 --rows=1 --cols=8 --dx=16 --dy=16 --x=192 --y=48
+	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_cow --width=16 --height=16 --rows=1 --cols=8 --dx=16 --dy=16 --x=192 --y=32
+
+.SECONDARY:
+out/sprite_pumpkin%.png: assets/assets.png
+	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_pumpkin --width=16 --height=16 --rows=1 --cols=8 --dx=16 --dy=16 --x=192 --y=64
+
+.SECONDARY:
+out/sprite_croc%.png: assets/assets.png
+	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_croc --width=16 --height=16 --rows=1 --cols=8 --dx=16 --dy=16 --x=192 --y=0
 
 out/mpanelOrig.png: assets/mpanel.png
 	../tools/croppa/out/croppa --input=assets/mpanel.png --output=out/mpanelOrig.png --width=320 --height=16 --rows=1 --cols=1 --dx=0 --dy=0 --x=0 --y=8
@@ -233,7 +281,15 @@ out/sprite_fallingPig%.png: assets/assets.png
 
 .SECONDARY:
 out/sprite_fallingCow%.png: assets/assets.png
-	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_fallingCow --width=16 --height=16 --rows=1 --cols=5 --dx=16 --dy=16 --x=192 --y=64
+	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_fallingCow --width=16 --height=16 --rows=1 --cols=5 --dx=16 --dy=16 --x=192 --y=48
+
+.SECONDARY:
+out/sprite_fallingPumpkin%.png: assets/assets.png
+	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_fallingPumpkin --width=16 --height=16 --rows=1 --cols=5 --dx=16 --dy=16 --x=192 --y=80
+
+.SECONDARY:
+out/sprite_fallingCroc%.png: assets/assets.png
+	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_fallingCroc --width=16 --height=16 --rows=1 --cols=5 --dx=16 --dy=16 --x=192 --y=16
 
 .SECONDARY:
 out/sprite_fallingRobot%.png: assets/assets.png
