@@ -139,11 +139,11 @@ out/workbench/main.o: $(MODULE) $(EXTRA)
 
 out/adf/%.o: %.s
 	vasmm68k_mot $(VASM_ARGS)  -DTRACKLOADER=1 $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
-	@vasmm68k_mot -depend=make -DTRACKLOADER=1 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > out/$*.d
+	@vasmm68k_mot -depend=make -DTRACKLOADER=1 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > out/adf/$*.d
 
 out/workbench/%.o: %.s
 	vasmm68k_mot  -DTRACKLOADER=0 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include
-	@vasmm68k_mot -depend=make  -DTRACKLOADER=1 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > out/$*.d
+	@vasmm68k_mot -depend=make  -DTRACKLOADER=1 $(VASM_ARGS) $(VASM_EXTRA_ARGS) $< -o $@ -I/usr/local/amiga/os-include > out/workbench/$*.d
 
 out/%.o: %.c
 	vc -O3 -c $< -o $@

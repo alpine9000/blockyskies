@@ -3,21 +3,22 @@ SUBDIRS=tools/makeadf \
 	tools/mapgen\
 	tools/fade\
 	tools/resize\
-	tools/croppa\
-	game
+	tools/croppa
 
 .PHONY: subdirs $(SUBDIRS)
 
-all: subdirs
+all: game
 
 clean:
 	for dir in $(SUBDIRS); do \
 		echo Cleaning $$dir; \
 		make -C $$dir clean; \
 	done
+	make -C game clean
 	rm -f *~
 
-subdirs: $(SUBDIRS)
+game: $(SUBDIRS)
+	make -C game all
 
 $(SUBDIRS):
 	@echo ""
