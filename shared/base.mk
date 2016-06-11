@@ -152,7 +152,7 @@ out/%.o: %.c
 
 ALL_OBJS=out/adf/main.o $(ADF_OBJS)
 ALL_WORKBENCH_OBJS=out/workbench/main.o $(WORKBENCH_OBJS)
-ALL_DEPENDS=$(ALL_OBJS:.o=.d)
+ALL_DEPENDS=$(ALL_OBJS:.o=.d) $(ALL_WORKBENCH_OBJS:.o=.d)
 
 out/main.bin: out/adf/main.o $(ADF_OBJS)
 	vlink $(LINKER_OPTIONS)  -brawbin1 $< $(ADF_OBJS) -o $@
