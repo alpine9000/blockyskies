@@ -159,7 +159,7 @@ ASSETS=$(IMAGEDATA) \
 
 include ../shared/base.mk
 
-out/foreground.bin: assets/assets.png
+out/foreground.bin: assets/assets.png assets/paletteA_foreground_flags.pal
 	$(IMAGECON) --use-palette=assets/paletteA_foreground_flags.pal --input $< $(IMAGECON_ARGS) --colors 8 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-grey-palette --output-palette --output-png --output-copperlist --output out/foreground
 	#sed -i '' "1s/.*/        dc.w COLOR00,\$$$(BACKGROUND_COLOR)/" out/foreground-copper-list.s 
 	sed -i '' "1s/.*/        dc.w COLOR00,\$$$(BACKGROUND_GREY_COLOR)/" out/foreground-grey-copper.s
@@ -183,71 +183,71 @@ out/%_tileFadeFrom.pal: assets/%_foreground_playarea.pal
 out/%_tileFadeTo.pal: assets/%_foreground_playarea.pal
 	cat assets/$*_foreground_playarea.pal  | tail -3 | head -2 > out/$*_tileFadeTo.pal
 
-out/background.bin: assets/background.png
+out/background.bin: assets/background.png assets/paletteA_background.pal
 	$(IMAGECON) --use-palette=assets/paletteA_background.pal --input $< $(IMAGECON_ARGS) --colors 8 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-grey-palette --output-palette --output-png --output-copperlist --output out/background --palette-offset 8
 
-out/panel.bin: assets/panel.png
+out/panel.bin: assets/panel.png assets/panel.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 16 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output-grey-palette --output out/panel --use-palette=assets/panel.pal
 
-out/pickups.bin: assets/pickups.png
+out/pickups.bin: assets/pickups.png assets/panel.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 16 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output-grey-palette --output out/pickups --use-palette=assets/panel.pal
 
-out/countdown.bin: assets/countdown.png
+out/countdown.bin: assets/countdown.png assets/panel.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 16 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output-grey-palette --output out/countdown --use-palette=assets/panel.pal
 
-out/mpanel.bin: assets/mpanel.png
+out/mpanel.bin: assets/mpanel.png assets/mpanel.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 16 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output-grey-palette --output out/mpanel --use-palette=assets/mpanel.pal
 
-out/sprite_pig-%.bin: out/sprite_pig-%.png
+out/sprite_pig-%.bin: out/sprite_pig-%.png assets/pig.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_pig-$* --palette-offset 16 --use-palette=assets/pig.pal
 
-out/sprite_cow-%.bin: out/sprite_cow-%.png
+out/sprite_cow-%.bin: out/sprite_cow-%.png assets/cow.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_cow-$* --palette-offset 16 --use-palette=assets/cow.pal
 
-out/sprite_pumpkin-%.bin: out/sprite_pumpkin-%.png
+out/sprite_pumpkin-%.bin: out/sprite_pumpkin-%.png assets/pumpkin.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_pumpkin-$* --palette-offset 16 --use-palette=assets/pumpkin.pal
 
-out/sprite_croc-%.bin: out/sprite_croc-%.png
+out/sprite_croc-%.bin: out/sprite_croc-%.png assets/croc.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_croc-$* --palette-offset 16 --use-palette=assets/croc.pal
 
-out/sprite_robot-%.bin: out/sprite_robot-%.png
+out/sprite_robot-%.bin: out/sprite_robot-%.png assets/robot.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_robot-$* --palette-offset 16 --use-palette=assets/robot.pal
 
-out/sprite_tank-%.bin: out/sprite_tank-%.png
+out/sprite_tank-%.bin: out/sprite_tank-%.png assets/tank.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_tank-$* --palette-offset 16 --use-palette=assets/tank.pal
 
 
-out/sprite_fallingPig-%.bin: out/sprite_fallingPig-%.png
+out/sprite_fallingPig-%.bin: out/sprite_fallingPig-%.png assets/pig.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingPig-$* --palette-offset 16 --use-palette=assets/pig.pal
 
-out/sprite_fallingCow-%.bin: out/sprite_fallingCow-%.png
+out/sprite_fallingCow-%.bin: out/sprite_fallingCow-%.png assets/cow.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingCow-$* --palette-offset 16 --use-palette=assets/cow.pal
 
-out/sprite_fallingPumpkin-%.bin: out/sprite_fallingPumpkin-%.png
+out/sprite_fallingPumpkin-%.bin: out/sprite_fallingPumpkin-%.png assets/pumpkin.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingPumpkin-$* --palette-offset 16 --use-palette=assets/pumpkin.pal
 
-out/sprite_fallingCroc-%.bin: out/sprite_fallingCroc-%.png
+out/sprite_fallingCroc-%.bin: out/sprite_fallingCroc-%.png assets/croc.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingCroc-$* --palette-offset 16 --use-palette=assets/croc.pal
 
-out/sprite_fallingRobot-%.bin: out/sprite_fallingRobot-%.png
+out/sprite_fallingRobot-%.bin: out/sprite_fallingRobot-%.png assets/robot.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingRobot-$* --palette-offset 16 --use-palette=assets/robot.pal
 
-out/sprite_fallingTank-%.bin: out/sprite_fallingTank-%.png
+out/sprite_fallingTank-%.bin: out/sprite_fallingTank-%.png assets/tank.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_fallingTank-$* --palette-offset 16 --use-palette=assets/tank.pal
 
-out/sprite_coin%.bin: out/sprite_coin%.png
+out/sprite_coin%.bin: out/sprite_coin%.png assets/coin.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_coin$* --palette-offset 24  --use-palette=assets/coin.pal
 
-out/sprite_bee%.bin: out/sprite_bee%.png
+out/sprite_bee%.bin: out/sprite_bee%.png assets/bee.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_bee$* --palette-offset 20  --use-palette=assets/bee.pal
 
-out/sprite_eye%.bin: out/sprite_eye%.png
+out/sprite_eye%.bin: out/sprite_eye%.png assets/eye.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_eye$* --palette-offset 20  --use-palette=assets/eye.pal
 
-out/sprite_clock%.bin: out/sprite_clock%.png
+out/sprite_clock%.bin: out/sprite_clock%.png assets/clock.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_clock$* --palette-offset 20  --use-palette=assets/clock.pal
 
-out/sprite_arrow%.bin: out/sprite_arrow%.png
+out/sprite_arrow%.bin: out/sprite_arrow%.png  assets/arrow.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --colors 4 --output-bitplanes  --output-palette --full-color-palette-file --output-palette-asm --output-palette --output-png --output-copperlist --output out/sprite_arrow$* --palette-offset 20  --use-palette=assets/arrow.pal
 
 
@@ -322,10 +322,10 @@ out/sprite_clock%.png: assets/assets.png
 out/sprite_arrow%.png: assets/assets.png
 	../tools/croppa/out/croppa --input=assets/assets.png --output=out/sprite_arrow --width=16 --height=15 --rows=1 --cols=4 --dx=16 --dy=16 --x=192 --y=160
 
-out/font%.bin: assets/font%.png
+out/font%.bin: assets/font%.png assets/mpanel.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --output-bitplanes --output-grey-palette-asm --output-palette-asm --output-palette --output out/font$* --colors=16 --use-palette assets/mpanel.pal --full-color-palette-file --output-mask --transparent-color=0,0,0 --output-png
 
-out/font8x85.bin: assets/font8x8.png
+out/font8x85.bin: assets/font8x8.png assets/font8x85.pal
 	$(IMAGECON) --input $< $(IMAGECON_ARGS) --output-bitplanes --output-grey-palette-asm --output-palette-asm --output-palette --output out/font8x85 --colors=32 --use-palette assets/font8x85.pal --full-color-palette-file --output-mask --transparent-color=0,0,0 --output-png
 
 out/backgroundMask-mask.bin: assets/background.png
