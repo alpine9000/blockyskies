@@ -185,6 +185,7 @@ ToggleDifficulty:
 	move.l	#levelInstallers,nextLevelInstaller
 	move.l	#"0001",levelCounter
 RefreshDifficulty:	
+	jsr	WaitVerticalBlank
 	bsr	RenderMenu
 	rts
 	
