@@ -13,6 +13,7 @@ body {
 h1 {
     text-align: center;
     color: #69EBFF;
+    text-shadow: 2px 2px rgb(13, 103, 151);
 }
 
 h2 {
