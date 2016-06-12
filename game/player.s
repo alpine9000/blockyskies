@@ -26,6 +26,7 @@
 	xdef playerLevelMissPixels
 
 	xdef pigPlayerSpriteConfig
+	xdef greenPigPlayerSpriteConfig
 	xdef cowPlayerSpriteConfig
 	xdef pumpkinPlayerSpriteConfig	
 	xdef crocPlayerSpriteConfig	
@@ -325,6 +326,13 @@ InstallPlayerColorPalette:
 InstallPigColorPalette:	
 	include "out/sprite_pig-0-palette.s"
 	rts
+
+InstallGreenPigColorPalette:	
+	move.w #$000,COLOR16(a6)
+	move.w #$811,COLOR18(a6)
+	move.w #$262,COLOR19(a6)
+	move.w #$3a4,COLOR17(a6)
+	rts	
 
 InstallCowColorPalette:	
 	include "out/sprite_cow-0-palette.s"
@@ -666,6 +674,11 @@ pigPlayerSpriteConfig:
 	dc.l	InstallPigColorPalette
 	dc.l	spritePig
 	dc.l	spriteFalling1
+
+greenPigPlayerSpriteConfig:
+	dc.l	InstallGreenPigColorPalette
+	dc.l	spritePig
+	dc.l	spriteFalling1	
 
 cowPlayerSpriteConfig:
 	dc.l	InstallCowColorPalette
