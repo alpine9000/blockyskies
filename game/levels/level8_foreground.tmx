@@ -6,14 +6,14 @@
  <tileset firstgid="321" name="items" tilewidth="16" tileheight="16" tilecount="320" columns="20">
   <image source="../assets/items.png" trans="000000" width="320" height="256"/>
  </tileset>
- <layer name="foreground" width="100" height="8">
+ <layer name="foreground" width="100" height="8" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjZ2BgsGLEjtlH5eguZwekxXBgkBwTFGOT2wplM6HRhOTQxaihr5JMfbSQI8ctltB40UILZyYkrAUNH/Q4gclhM3eoydXT2b7dOORg8YGcP5jQsB2auBiaHLnph9w8QG85eroTOX+gxwMsfpDjGj0+Bls6JydNDiZ3IucPbGUSLD6x5RtK88eoHP78IYYDI8uh55+BSFvL6WwfPd0Ciw9pBtxtMFrIDcY25mCSAwBF0Fxn
   </data>
  </layer>
  <layer name="pathway" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJztVEsKwlAMfBVcuRdc9QSuvP8BuvIErnqCrtza4Bscx8zzgwhCBx4tTV4ymSQtZcE/YUsnw3k+Q31mtk/w6j2X910c5zM1bPvuO3k+xVA5AMp1oPf17LeZz6k8cs6+BaK3q3Kr9dDd54t78c1pBA59d80fGCvPlrYOqMHZIubO2MGF69RYygk8s9qz2Jx7VW41M0fO7Ti36gj+TndwDb2H6qMcYevJNtZ8TlvE4nk/lfu+KnqatWwfdS4CeIc/9xv+blY1dqZf3J2MD+qBtjrnqENt2lNGy+Z6oXy11qnGAhetEzanEf8HAjwzynMkG+sDG/ajtXP7hKPW+MxHgZxOU47t9p1780ovOC8DewytdOegt9sT7F7GCzVoTAeN9SuAo+ZmTfDUnYMt013vu7y6q60eQiPEXrAgcAE2fmWN
+   eJztVDEOwjAMTJE6dUdi6guY+P8DOvGCTn1BJ1ZikRPu4QulQgyoJ0UttWOfzzYp7fgn3PIZyjOybY25Birvp7jmM1ds5+Y7ebZiKBwA5jq49zb7dfmM6ZVz9M1wzOeQnrVemmU+u2fflEbg0DeP/Iap8Kxpq4AalM1inoQdXHydHIs5gWdUexSbc7eV312jOdfqMP5Kd3A1vYfiwxxh651tKvmUtojl531My74yejdr0T7yXBjwDn/fb/irWeXYkX52dxY+qAfa8pyjDrZxTz1qNtUL5su1ziUWuHCdsCmN/P+Awc8M85yczesDG/ajtnPngCPX+M6HgZxKUx9b7bvvzZpe+Lwe2GNoxTsHvdWeYPciXqiBYypwrF8BHDm31wRP3jnYIt35vsrLu1rrITRC7B07DHdeWWVJ
   </data>
  </layer>
  <layer name="items" width="100" height="8">
