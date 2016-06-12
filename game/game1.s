@@ -927,7 +927,8 @@ BlitCountdown:
 	Level	4,"MOO!",75,4*2,8,6,"ALRIGHT! LEVEL 4 COMPLETE!!",E,99,2,0,cow,2,3
 	Level	5,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 5 COMPLETE!",D,99,1,0,tank,1,1
 	Level	6,"WHAT? WHAT?!",50,4*2,8,6,"NICE! LEVEL 6 COMPLETE!",F,98,1,0,croc,2,2
-	Level	7,"Happy Haloween!",50,4*2,8,6,"NICE! LEVEL 6 COMPLETE!",G,98,1,0,greenPig,2,2	
+	Level	7,"Happy Haloween!",50,4*2,8,6,"NICE! LEVEL 7 COMPLETE!",G,98,1,0,greenPig,2,2
+	Level	8,"Vrooom!",50,4*2,8,6,"NICE! LEVEL 8 COMPLETE!",H,98,1,0,pumpkin,2,2		
 	endif
 
 
@@ -937,7 +938,8 @@ BlitCountdown:
 	Palette	D
 	Palette	E
 	Palette	F
-	Palette	G	
+	Palette	G
+	Palette	H	
 
 levelData:
 	ds.b	(level2End-level2Start)+1024
@@ -1060,6 +1062,7 @@ deAnimIndexPattern:
 panelGreyPalette:
 	include "out/panel-grey-table.s"
 levelInstallers:
+	dc.l	InstallLevel8	
 	dc.l	InstallLevel7
 	dc.l	InstallLevel1
 	if TEST_VERSION=0

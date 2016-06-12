@@ -9,6 +9,7 @@ paletteD_BACKGROUND_COLOR_LONG=134 134 134 255
 paletteE_BACKGROUND_COLOR_LONG=000 153 238 255
 paletteF_BACKGROUND_COLOR_LONG=096 135 240 255
 paletteG_BACKGROUND_COLOR_LONG=000 000 000 255
+paletteH_BACKGROUND_COLOR_LONG=000 153 238 255
 
 MAX_P61_SIZE=$(shell ls -Sl assets/P61.* | awk '{print $$5}' | head -1)
 
@@ -146,6 +147,7 @@ ASSETS=$(IMAGEDATA) \
 	out/level5_foreground-map.s\
 	out/level6_foreground-map.s\
 	out/level7_foreground-map.s\
+	out/level8_foreground-map.s\
 	out/background-map.s  Makefile link.script.x\
 	out/menu-palette.s\
 	out/paletteA_playarea_fade.s out/paletteA_flags_fade.s out/paletteA_foreground-palette-table.s out/paletteA_tileFade.s\
@@ -155,6 +157,7 @@ ASSETS=$(IMAGEDATA) \
 	out/paletteE_playarea_fade.s out/paletteE_flags_fade.s out/paletteE_foreground-palette-table.s out/paletteE_tileFade.s\
 	out/paletteF_playarea_fade.s out/paletteF_flags_fade.s out/paletteF_foreground-palette-table.s out/paletteF_tileFade.s\
 	out/paletteG_playarea_fade.s out/paletteG_flags_fade.s out/paletteG_foreground-palette-table.s out/paletteG_tileFade.s\
+	out/paletteH_playarea_fade.s out/paletteH_flags_fade.s out/paletteH_foreground-palette-table.s out/paletteH_tileFade.s\
 	out/panelFade.s out/jump.raw out/falling.raw out/chaching.raw out/whoosh.raw out/yay.raw
 
 include ../shared/base.mk
