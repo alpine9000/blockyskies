@@ -167,46 +167,46 @@ spriteCowRightJump:
 	incbin	"out/sprite_cow-2.bin" ; 7, right jump
 	dc.l	0
 
-spritePumpkin:
-spritePumpkinUp:
+spriteCar:
+spriteCarUp:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-1.bin" ; 0, up
+	incbin	"out/sprite_car-1.bin" ; 0, up
 	dc.l	0
-spritePumpkinUpJump:
+spriteCarUpJump:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-0.bin" ; 1, up jump
+	incbin	"out/sprite_car-0.bin" ; 1, up jump
 	dc.l	0		
-spritePumpkinDown:
+spriteCarDown:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-5.bin" ; 2, down
+	incbin	"out/sprite_car-5.bin" ; 2, down
 	dc.l	0
-spritePumpkinDownJump:
+spriteCarDownJump:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-4.bin" ; 3, down jump
+	incbin	"out/sprite_car-4.bin" ; 3, down jump
 	dc.l	0		
-spritePumpkinLeft:
+spriteCarLeft:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-7.bin" ; 4, left
+	incbin	"out/sprite_car-7.bin" ; 4, left
 	dc.l	0
-spritePumpkinLeftJump:
+spriteCarLeftJump:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-6.bin" ; 5, left jump
+	incbin	"out/sprite_car-6.bin" ; 5, left jump
 	dc.l	0		
-spritePumpkinRight:
+spriteCarRight:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-3.bin" ; 6, right
+	incbin	"out/sprite_car-3.bin" ; 6, right
 	dc.l	0
-spritePumpkinRightJump:
+spriteCarRightJump:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_pumpkin-2.bin" ; 7, right jump
+	incbin	"out/sprite_car-2.bin" ; 7, right jump
 	dc.l	0
 
 spriteCroc:
@@ -359,30 +359,30 @@ spriteFallingCow4:
 	dc.l	0
 
 
-spriteFallingPumpkin0:
+spriteFallingCar0:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_fallingPumpkin-0.bin" 
+	incbin	"out/sprite_fallingCar-0.bin" 
 	dc.l	0
-spriteFallingPumpkin1:
+spriteFallingCar1:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_fallingPumpkin-1.bin" 
+	incbin	"out/sprite_fallingCar-1.bin" 
 	dc.l	0
-spriteFallingPumpkin2:
+spriteFallingCar2:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_fallingPumpkin-2.bin" 
+	incbin	"out/sprite_fallingCar-2.bin" 
 	dc.l	0
-spriteFallingPumpkin3:
+spriteFallingCar3:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_fallingPumpkin-3.bin" 
+	incbin	"out/sprite_fallingCar-3.bin" 
 	dc.l	0
-spriteFallingPumpkin4:
+spriteFallingCar4:
 	dc.w	0,0
 	dc.w	0,0
-	incbin	"out/sprite_fallingPumpkin-4.bin" 
+	incbin	"out/sprite_fallingCar-4.bin" 
 	dc.l	0
 
 

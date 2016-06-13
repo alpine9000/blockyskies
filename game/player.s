@@ -28,7 +28,7 @@
 	xdef pigPlayerSpriteConfig
 	xdef greenPigPlayerSpriteConfig
 	xdef cowPlayerSpriteConfig
-	xdef pumpkinPlayerSpriteConfig	
+	xdef carPlayerSpriteConfig	
 	xdef crocPlayerSpriteConfig	
 	xdef robotPlayerSpriteConfig
 	xdef silverRobotPlayerSpriteConfig	
@@ -338,8 +338,8 @@ InstallCowColorPalette:
 	include "out/sprite_cow-0-palette.s"
 	rts
 
-InstallPumpkinColorPalette:	
-	include "out/sprite_pumpkin-0-palette.s"
+InstallCarColorPalette:	
+	include "out/sprite_car-0-palette.s"
 	rts	
 
 InstallCrocColorPalette:	
@@ -685,10 +685,10 @@ cowPlayerSpriteConfig:
 	dc.l	spriteCow
 	dc.l	spriteFallingCow1
 
-pumpkinPlayerSpriteConfig:
-	dc.l	InstallPumpkinColorPalette
-	dc.l	spritePumpkin
-	dc.l	spriteFallingPumpkin1	
+carPlayerSpriteConfig:
+	dc.l	InstallCarColorPalette
+	dc.l	spriteCar
+	dc.l	spriteFallingCar1	
 
 crocPlayerSpriteConfig:
 	dc.l	InstallCrocColorPalette
