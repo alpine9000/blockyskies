@@ -42,11 +42,11 @@ StartupFromOS:
 	    *--- call demo ---*
 
 	movem.l a4-a6,-(sp)
-	move.l	a7,longJump
-	jsr	Entry2
+	move.l	a7,longJump	; save the stack pointer
+	jmp	Entry2
 LongJump:	
-	move.l	longJump,a7
-	movem.l (sp)+,a4-a6
+	move.l	longJump,a7	; this isn't required as the stack pointer will not be corrupted
+	movem.l (sp)+,a4-a6     ; but it does allow us to bail out of the middle of a subroutine
 
 	    *--- restore all ---*
 

@@ -65,7 +65,7 @@ ReShowMenu:
 	
 .wait:
 	jsr	WaitVerticalBlank
-	jsr	_ProcessJoystick
+	bra	_ProcessJoystick
 
 RenderMenu:
 	;;  small restore
@@ -270,7 +270,7 @@ _ProcessJoystick:
 	bra	.wait
 .pressed:
 	bra	ButtonPressed
-	rts
+
 
 StrCpy:
 	;; a0 - src

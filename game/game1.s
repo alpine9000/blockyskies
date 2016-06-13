@@ -50,7 +50,7 @@ byteMap:
 	endif
 
 
-	include "wbstartup.i"
+	include "wbstartup.i"		; does nothing if TRACKLOADER=1
 	
 Entry:
 	if TRACKLOADER=0
@@ -377,7 +377,7 @@ GameOver:
 	
 TutorialOver:
 	jsr	RestorePanel
-	add.l	#8,sp		; dirty hack - unwind the call stack
+	add.l	#4,sp		; dirty hack - unwind the call stack
 	move.l	#levelInstallers,nextLevelInstaller
 	move.l	#"0001",levelCounter
 	lea	tutorialOverMessage,a1	
@@ -1085,6 +1085,7 @@ tutorialLevelInstallers:
 	dc.l	InstallLevel96
 	dc.l	InstallLevel97
 endTutorialLevelInstaller:	
+
 	dc.l	0	
 panelFade:
 	include "out/panelFade.s"
