@@ -8,17 +8,17 @@
  </tileset>
  <layer name="foreground" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJztlkEKgCAQRc1NN3DTDbpBLbpXq47TCVp1uRQcGD5qMNVk0OJj+DAH/3yxNcaMTVrtz9QY8cnLZRSYjUqxLX5bGM8Yzt2xbhaue4JJagnj4D3p4ZwtUx/PBz0hlvvvl9iivN9e8CT4wfNhQRPMO2DS/pFmQJtp1snzgT6QP9xr9KO2Ppf0ZE118nyk7iTyM5Wbq/n4WTkfLiPOMD9v9NaqvJ9mLZSPzuTfX0+wmt6YNTHiBwlUW00=
+   eJxjZ2BgsGLEjtlH5egmB5O3A2ImIBbDQhOS20qmPnxylXTWRws/kGMmiLYExokWHvnBJrebTH3LaeAWapspBo0PStLBqBz15IjNH+SmSXqbOdTlkPPHYKoHRqocsfljJMvRot7BVTbA8oc0A+72Fy3kBlMbczDJweQBEHlbHQ==
   </data>
  </layer>
  <layer name="pathway" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJztVDEOwjAMTJE6dUdi4gWd+v8HZOIFTH1BJ1ZikRPm8IWCEAPqSVHaOrHPZ7spbfgnXMrKdY9sn/pcAxX3XZzKWhq2sftOnE+RKweAuWb33JdzQ1nn9Mw5+mbYl7VL91yn7jGe3bNvSiNwOHa3+Ia58mxpq4AclM18HoQdXHye7Is5gafPfRL+cxC7b7wPnebcysP4K93B1fTO6ZkraoEdmGs8pS18+X4/p8e6Mo6u16J55L4w4Bnnfb1xXvUq+470s7uLOIN8oC33OfJgG9fUo2VTtWC+nOtSfYEL5wmb0sj/Bwy+Z5jn7GxeH9gwH62ZGwOOnOOrMwzEVJp632refW3W1MLH9cAcQyueOeit5gSzF/FCDuqf88rXrwCOHNtrgp1nDrZId76v4vKstmoIjeB7wwbDFfZHZX0=
+   eJztlbtxw0AMRO8CRqzAkSpw5P4LYOQKGKkCRUytG2vHz6sFRUV2IMxwSOG3Cxxwau0l/1k+r897b2076C+/R3HL9fno+7jPcBm2y0GOy42n3o43eA0cvYlX4TCXfrO+DbqUk7qEofxT/7a/hd4xv2S6fa+IT3IOmOSluBnxyrkihv70TfkXfI8cp36sPtnkRxzmnHbwxc9zsi5ymY3P3H9yrC3PsvJvpkvceXbjfWn3mOQlm59nOl/yJBf2ZOCfLFY6j0vxwlFdmmHWwNqTbcSnOUk1pLrPLc+N8nHGGnRbu5/l1BvG6Zx0hmk/0m/WKnyKcL0P4sB7wIU+wtFsOk9hVzbO2Nx/7xX7Ue2Hz5LXz3l33+qMhaHeOCZ3udoPn2Xxr+auwhs6cddcpTjWRy5V3yobz6e6WzX/1f1ZScV/z8d3Le2e6uf9Sp3bhFPNhed+psZHwl04YmM/nItzr/4fXvL38gVmF46U
   </data>
  </layer>
  <layer name="items" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgx3EMEJoJ0bs8o44xGEApi+AgLqBBrj8hwt4UegfYuxzplKYxRBpDsg+TyrHE8wP3jSOf0rMJyWcCaV3dLWkqCcHUBpfPmj6YwdhPnUh4CYPqDworD2Q1MLKHFckeXQ5UuMHOXxcseilRjnni8MMbPaRaxa6ucSWEYTcQig8PdDkkfMILeoIfGaGEWGfH5luciPR7GgS7SHGfFwAXxxhy//IYehOYRxRI479cZhBahomxkxKAaXhNQpoBwDI8BH2
+   eJztklsKgCAQRW1rlQU9bAO2/23kfAQSEt5xhhI8397XoDGN2uk77P0Cvufy7JWb6wv7Ua70xkHxZivoTV1QTaz1BXoOlKV1v5HhS5oN1MV/krScXIS3jqdCNucmudjguyveS9sfxQp0+XKTC7mTYPbt5UBPjX/OhTag/f/InNhwVLiLOqe2NOriAm4nDT8=
   </data>
  </layer>
 </map>
