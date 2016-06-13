@@ -920,15 +920,16 @@ BlitCountdown:
 	Level	96,"PRESS FIRE TO ACTIVATE THE CLOCK",200,2*2,12,10,"EYES WILL UNHIDE THE BOARD",A,21,0,1,pig,1,1
 	Level	97,"PRESS FIRE TO ACTIVATE THE EYE",100,2*2,12,10,"YOU DID IT!",A,21,0,1,pig,1,1
 
-	Level	1,"WELCOME TO BLOCKY SKIES!",70,2*2,12,10,"STAY TUNED FOR THE FULL RELEASE!!",A,99,0,1,pig,1,1
-	Level	2,"HAVING FUN YET?",70,2*2,12,10,"LEVEL 2",B,98,2,0,robot,1,1
+	Level	1,"WELCOME TO BLOCKY SKIES!",70,2*2,12,10,"ALRIGHT! LEVEL 1 COMPLETE!",A,99,0,1,pig,1,1
+	Level	2,"ONE SMALL STEP FOR ROBOTS...",70,2*2,12,10,"LEVEL 2 COMPLETE!",B,99,2,0,robot,1,1
 	if TEST_VERSION=0	
-	Level	3,"GIDDY UP!",50,4*2,8,6,"GETTING FASTER!, LEVEL 3 COMPLETE!",C,98,2,0,silverRobot,1,1
-	Level	4,"MOO!",75,4*2,8,6,"ALRIGHT! LEVEL 4 COMPLETE!!",E,99,2,0,cow,2,3
-	Level	5,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 5 COMPLETE!",D,99,1,0,tank,1,1
-	Level	6,"WHAT? WHAT?!",50,4*2,8,6,"NICE! LEVEL 6 COMPLETE!",F,98,1,0,croc,2,2
-	Level	7,"Happy Haloween!",50,4*2,8,6,"NICE! LEVEL 7 COMPLETE!",G,98,1,0,greenPig,2,2
-	Level	8,"Vrooom!",50,4*2,8,6,"NICE! LEVEL 8 COMPLETE!",H,98,1,0,pumpkin,2,2		
+	Level	3,"VROOOM!",70,2*2,10,8,"SPRAY THE CHAMPAGNE!",H,99,1,0,pumpkin,1,1
+	Level	4,"ANYONE SEEN BENDER?",75,4*2,8,6,"WHOOHOO! LEVEL 4 COMPLETE!",C,98,2,0,silverRobot,1,1
+	Level	5,"MOO!",75,4*2,8,6,"ALRIGHT! LEVEL 4 COMPLETE!!",E,99,2,0,cow,2,3
+	Level	6,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 5 COMPLETE!",D,99,1,0,tank,1,1
+	Level	7,"WHAT? WHAT?!",50,4*2,8,6,"NICE! LEVEL 6 COMPLETE!",F,98,1,0,croc,2,2
+	Level	8,"Happy Haloween!",50,4*2,8,6,"NICE! LEVEL 7 COMPLETE!",G,98,1,0,greenPig,2,2
+
 	endif
 
 
@@ -1062,8 +1063,6 @@ deAnimIndexPattern:
 panelGreyPalette:
 	include "out/panel-grey-table.s"
 levelInstallers:
-	dc.l	InstallLevel8	
-	dc.l	InstallLevel7
 	dc.l	InstallLevel1
 	if TEST_VERSION=0
 	dc.l	InstallLevel2
@@ -1071,6 +1070,8 @@ levelInstallers:
 	dc.l	InstallLevel4
 	dc.l	InstallLevel5
 	dc.l	InstallLevel6
+	dc.l	InstallLevel7
+	dc.l	InstallLevel8	
 	endif
 	dc.l	0
 nextLevelInstaller:
