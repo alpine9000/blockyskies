@@ -689,7 +689,12 @@ Level3InterruptHandler:
 	add.l	#1,verticalBlankCount
 	jsr 	SetupSpriteData
 	cmp.w	#0,P61_Master
-	beq	.checkCopper
+	bne	.playMusic
+	move.w  #0,AUD0VOL(a6)
+	move.w  #0,AUD1VOL(a6)
+	move.w  #0,AUD2VOL(a6)
+	bra	.checkCopper
+.playMusic:
 	jsr	P61_Music
 .checkCopper:
 	move.w	INTREQR(a6),d0
