@@ -5,7 +5,9 @@
 	xdef	fadeMusic
 	
 ResetSound:
+	if SFX=1
 	move.l	#0,blackoutFrame
+	endif
 	rts
 	
 PlayNextSound:
@@ -45,6 +47,7 @@ PlayJumpSound:
 	bgt	.skip	
 	move.w	#0,dontKillSound	
 	lea     jump(pc),a1
+	KillSound
         move.l  a1,AUD3LCH(a6)
         move.w  #123,AUD3PER(a6)
         move.w  #64,AUD3VOL(a6)
@@ -74,6 +77,7 @@ PlayWhooshSound:
 	move.l	blackoutFrame,d0
 	cmp.l	frameCount,d0
 	bgt	.skip	
+	BlackoutSound 15
 	KillSound
 	move.w	#0,dontKillSound	
 	lea     whoosh,a1
@@ -104,6 +108,7 @@ PlayChachingSound:
 	cmp.l	frameCount,d0
 	bgt	.skip
 	KillSound
+	BlackoutSound 25
 	move.w	#0,dontKillSound
 	lea     chaching,a1
         move.l  a1,AUD3LCH(a6)
@@ -117,6 +122,7 @@ PlayChachingSound:
 
 PlayYaySound:
 	KillSound
+	BlackoutSound 49
 	move.w	#1,dontKillSound
 	lea     yay,a1
         move.l  a1,AUD3LCH(a6)
@@ -128,11 +134,7 @@ PlayYaySound:
 
 PlayBonusSound:
 	KillSound
-	move.l	d0,-(sp)
-	move.l	frameCount,d0
-	add.l	#41,d0
-	move.l	d0,blackoutFrame
-	move.l	(sp)+,d0
+	BlackoutSound 41
 	move.w	#0,dontKillSound
 	lea     yay,a1
         move.l  a1,AUD3LCH(a6)

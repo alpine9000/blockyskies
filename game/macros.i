@@ -11,19 +11,30 @@ PlaySound:	macro
 	endif
 	endm
 
+BlackoutSound:	macro
+	move.l	d0,-(sp)
+	move.l	frameCount,d0
+	add.l	#\1,d0
+	move.l	d0,blackoutFrame
+	move.l	(sp)+,d0
+	endm
+
 KillSound:	macro
 	if	SFX=1
 	cmp.w	#1,dontKillSound
 	beq	.\@skip
 	move.w	#(DMAF_AUD3),DMACON(a6)
+	move.w	#0,AUD3VOL(a6)
         move.w  #1,AUD3PER(a6)	
 	move.w  #2,AUD3LEN(a6) ; set the empty sound for the next sample to be played
 	move.l	#emptySound,AUD3LCH(a6)	
-	WaitScanLines 3
+	WaitScanLines 4
 	move.w	#(DMAF_AUD3|DMAF_SETCLR),DMACON(a6)
+	move.w	#64,AUD3VOL(a6)
 .\@skip:
 	endif
 	endm
+
 
 WaitScanLines: macro
 	if \1 != 0
