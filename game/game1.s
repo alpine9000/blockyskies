@@ -410,6 +410,7 @@ LevelComplete:
 	jsr	Message
 	jsr	WaitForJoystick	
 	bsr	InstallNextLevel
+	jsr	UpdateLevelCounter
 	jsr	RestorePanel	
 	jsr	ResetItems
 	bra	Reset

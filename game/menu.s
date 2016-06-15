@@ -2,6 +2,7 @@
 
 	xdef	ShowMenu
 	xdef	levelCounter
+	xdef	UpdateLevelCounter
 	
 SPLASH_COLOR_DEPTH		equ 5
 SPLASH_SCREEN_WIDTH_BYTES	equ 40
@@ -174,6 +175,22 @@ ToggleMusic:
 .done:
 	bsr	RenderMenu
 	rts
+
+
+UpdateLevelCounter:
+	movem.l	d0/a0-a1,-(sp)
+	move.l	nextLevelInstaller,a0
+	cmp.l	#tutorialLevelInstallers,a0
+	bge	.skip
+	lea	levelCounter,a0
+	jsr	IncrementCounter
+	cmp.l	#nextLevelInstaller-8,nextLevelInstaller
+	ble	.skip
+	move.l	#"0001",levelCounter
+.skip:
+	movem.l	(sp)+,d0/a0-a1
+	rts
+
 
 ToggleDifficulty:
 	PlaySound Menu
