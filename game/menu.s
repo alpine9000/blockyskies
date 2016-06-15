@@ -282,12 +282,29 @@ _ProcessJoystick:
 	cmp.b	#5,joystickpos 	; down
 	bne	.notDown
 	bsr	MenuDown
-	bsr	WaitForJoystickRelease	
+	bsr	WaitForJoystickRelease
 .notDown:
+	cmp.b	#7,joystickpos 	; left
+	bne	.notLeft
+	add.w	#10,v2Counter
+	cmp.w	#73,v2Counter
+	beq	V2
+	bsr	WaitForJoystickRelease
+.notLeft:
+	cmp.b	#3,joystickpos 	; right
+	bne	.notRight
+	add.w	#1,v2Counter
+	cmp.w	#73,v2Counter
+	beq	V2
+	bsr	WaitForJoystickRelease
+.notRight:
 	bra	.wait
 .pressed:
 	bra	ButtonPressed
 
+V2:
+	move.l	#v2LevelInstallers,nextLevelInstaller
+	jmp	StartGame
 
 StrCpy:
 	;; a0 - src
@@ -299,6 +316,9 @@ StrCpy:
 	bra	.loop
 .done:
 	rts
+
+v2Counter:
+	dc.l	0
 
 levelCounter:
 	dc.b	"0001"

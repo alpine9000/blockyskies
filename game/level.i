@@ -16,7 +16,8 @@ InstallLevel\1:
 	move.w	#\6,playerLevelMissPixels
 	move.l	#\9,playerXColumnLastSafe
 	move.l	#\9,playerXColumn
-
+	move.w	#-\f,movingCounterInitValue
+	move.w	#PLAYER_INITIAL_X+16*\g,movingHorizontalThreshold
 	jsr     InstallPlayerColorPalette
 	
 	if \b=0

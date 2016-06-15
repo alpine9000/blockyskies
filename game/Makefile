@@ -148,6 +148,7 @@ ASSETS=$(IMAGEDATA) \
 	out/level6_foreground-map.s\
 	out/level7_foreground-map.s\
 	out/level8_foreground-map.s\
+	out/level11_foreground-map.s\
 	out/background-map.s  Makefile link.script.x\
 	out/menu-palette.s\
 	out/paletteA_playarea_fade.s out/paletteA_flags_fade.s out/paletteA_foreground-palette-table.s out/paletteA_tileFade.s\

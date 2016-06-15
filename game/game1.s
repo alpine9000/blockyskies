@@ -42,6 +42,7 @@
 	xdef	nextLevelInstaller
 	xdef	levelInstallers
 	xdef	tutorialLevelInstallers
+	xdef	v2LevelInstallers
 
 	if TRACKLOADER=1
 byteMap:
@@ -140,7 +141,7 @@ Reset:
 	move.w	#0,pathwayRenderPending
 	move.w	#0,pathwayClearPending
 	move.w	#0,moving
-	move.w	#-2*FOREGROUND_MOVING_COUNTER,movingCounter
+	move.w	movingCounterInitValue,movingCounter
 	move.l	playareaFade,playareaFadePtr
 	move.l	#panelFade,panelFadePtr
 	move.l	flagsFade,flagsFadePtr
@@ -235,8 +236,9 @@ GameLoop:
 	move.l	#0,foregroundScrollPixels	
 .s2:	
 	jsr	ProcessJoystick
-	cmp.w	#PLAYER_INITIAL_X+16*3,spriteX
-	bge	.setMoving
+	move.w	movingHorizontalThreshold,d0
+	cmp.w	spriteX,d0
+	blt	.setMoving
 	addq.w	#1,movingCounter
 	cmp.w	#FOREGROUND_MOVING_COUNTER,movingCounter
 	bge	.setMoving
@@ -386,10 +388,23 @@ TutorialOver:
 	jsr	RestorePanel
 	bra	MainMenu
 
+V2Over:
+	jsr	RestorePanel
+	add.l	#4,sp		; dirty hack - unwind the call stack
+	move.l	#levelInstallers,nextLevelInstaller
+	move.l	#"0001",levelCounter
+	lea	v2OverMessage,a1
+	jsr	Message
+	jsr	WaitForJoystick
+	jsr	RestorePanel
+	bra	MainMenu
+
 InstallNextLevel:
 	move.l	nextLevelInstaller,a0
 	cmp.l	#endTutorialLevelInstaller,a0
 	beq	TutorialOver
+	cmp.l	#endV2LevelInstallers,a0
+	beq	V2Over
 	cmp.l	#0,(a0)
 	bne	.dontResetLevelInstaller
 	move.l	#levelInstallers,nextLevelInstaller
@@ -917,24 +932,26 @@ BlitCountdown:
 	;; \b 0 = load from disk, 1 = resident
 	;; \c sprite
 	;; \d beeUp speed
-	;; \e beeDown speed	
-	Level	91,"STAY ON THE PATHWAYS!",100,2*2,12,10,"WELL DONE!",A,21,0,1,pig,1,1
-	Level	92,"COLLECT COINS!",100,2*2,12,10,"NEXT COLLECT AN ARROW...",A,21,0,1,pig,1,1
-	Level	93,"PRESS FIRE TO ACTIVATE THE ARROW",100,2*2,12,10,"WHOO HOO!",A,21,0,1,pig,1,1
-	Level	94,"WATCH OUT FOR BEES!",100,2*2,12,10,"LOL - BEES :-)",A,21,0,1,pig,1,1
-	Level	95,"REMEMBER THE PATHWAYS BEFORE THEY FADE!",75,2*2,12,10,"CLOCKS WILL STOP THE BOARD MOVING",A,21,0,1,pig,1,1
-	Level	96,"PRESS FIRE TO ACTIVATE THE CLOCK",200,2*2,12,10,"EYES WILL UNHIDE THE BOARD",A,21,0,1,pig,1,1
-	Level	97,"PRESS FIRE TO ACTIVATE THE EYE",100,2*2,12,10,"YOU DID IT!",A,21,0,1,pig,1,1
+	;; \e beeDown speed
+	;; \f column in which if player moves board will start scrolling
+	Level	91,"STAY ON THE PATHWAYS!",100,2*2,12,10,"WELL DONE!",A,21,0,1,pig,1,1,200,3
+	Level	92,"COLLECT COINS!",100,2*2,12,10,"NEXT COLLECT AN ARROW...",A,21,0,1,pig,1,1,200,3
+	Level	93,"PRESS FIRE TO ACTIVATE THE ARROW",100,2*2,12,10,"WHOO HOO!",A,21,0,1,pig,1,1,200,3
+	Level	94,"WATCH OUT FOR BEES!",100,2*2,12,10,"LOL - BEES :-)",A,21,0,1,pig,1,1,200,3
+	Level	95,"REMEMBER THE PATHWAYS BEFORE THEY FADE!",75,2*2,12,10,"CLOCKS WILL STOP THE BOARD MOVING",A,21,0,1,pig,1,1,200,3
+	Level	96,"PRESS FIRE TO ACTIVATE THE CLOCK",200,2*2,12,10,"EYES WILL UNHIDE THE BOARD",A,21,0,1,pig,1,1,200,3
+	Level	97,"PRESS FIRE TO ACTIVATE THE EYE",100,2*2,12,10,"YOU DID IT!",A,21,0,1,pig,1,1,200,3
 
-	Level	1,"WELCOME TO BLOCKY SKIES!",70,2*2,12,10,"ALRIGHT! LEVEL 1 COMPLETE!",A,99,0,1,pig,1,1
-	Level	2,"ONE SMALL STEP FOR ROBOTS...",70,2*2,12,10,"LEVEL 2 COMPLETE!",B,99,0,0,robot,1,1
-	if TEST_VERSION=0	
-	Level	3,"VROOOM!",70,2*2,10,8,"SPRAY THE CHAMPAGNE!",H,99,1,0,car,1,1
-	Level	4,"ANYONE SEEN BENDER?",75,4*2,8,6,"WHOOHOO! LEVEL 4 COMPLETE!",C,99,2,0,silverRobot,2,1
-	Level	5,"MOO!",75,4*2,8,6,"THAT WAS ONE FAST COW!!",E,99,2,0,cow,2,3
-	Level	6,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 6 DESTROYED!",D,99,1,0,tank,1,1
-	Level	7,"WHAT? WHAT?!",50,4*2,8,6,"TOO EASY?? LEVEL 7 COMPLETE!",F,99,0,0,croc,2,2
-	Level	8,"HAPPY HALLOWEEN!",50,4*2,8,6,"YOU WIN!!! THANKS FOR PLAYING!",G,99,1,0,greenPig,2,2
+	Level	1,"WELCOME TO BLOCKY SKIES!",70,2*2,12,10,"ALRIGHT! LEVEL 1 COMPLETE!",A,99,0,1,pig,1,1,200,3
+	Level	2,"ONE SMALL STEP FOR ROBOTS...",70,2*2,12,10,"LEVEL 2 COMPLETE!",B,99,0,0,robot,1,1,200,3
+	if TEST_VERSION=0
+	Level	3,"VROOOM!",70,2*2,10,8,"SPRAY THE CHAMPAGNE!",H,99,1,0,car,1,1,200,3
+	Level	4,"ANYONE SEEN BENDER?",75,4*2,8,6,"WHOOHOO! LEVEL 4 COMPLETE!",C,99,2,0,silverRobot,2,1,200,3
+	Level	5,"MOO!",75,4*2,8,6,"THAT WAS ONE FAST COW!!",E,99,2,0,cow,2,200,3,200,3
+	Level	6,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 6 DESTROYED!",D,99,1,0,tank,1,1,200,3
+	Level	7,"WHAT? WHAT?!",50,4*2,8,6,"TOO EASY?? LEVEL 7 COMPLETE!",F,99,0,0,croc,2,2,200,3
+	Level	8,"HAPPY HALLOWEEN!",50,4*2,8,6,"YOU WIN!!! THANKS FOR PLAYING!",G,99,1,0,greenPig,2,2,200,3
+	Level	11,"VROOM II!",50,4*2,4,2,"NICE EFFORT!",H,99,1,0,car,2,2,100,5
 
 	endif
 
@@ -966,6 +983,10 @@ gameOverMessage:
 	align 	4
 tutorialOverMessage:
 	dc.b	"TUTORIAL COMPLETE!"
+	dc.b	0
+	align 	4
+v2OverMessage:
+	dc.b	"VROOM II COMPLETE!"
 	dc.b	0
 	align 	4
 skippedFramesCounterText:
@@ -1083,6 +1104,11 @@ levelInstallers:
 nextLevelInstaller:
 	dc.l	levelInstallers	
 
+v2LevelInstallers:
+	dc.l	InstallLevel11
+endV2LevelInstallers:
+	dc.l	0
+
 tutorialLevelInstallers:
 	dc.l	InstallLevel91
 	dc.l	InstallLevel92
@@ -1139,6 +1165,10 @@ frameCount:
 	dc.l	0
 verticalBlankCount:
 	dc.l	0
+movingCounterInitValue:
+	dc.w	0
+movingHorizontalThreshold:
+	dc.w	0
 movingCounter:
 	dc.w	0
 moving:
