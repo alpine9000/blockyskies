@@ -7,6 +7,7 @@ VerticalScrollBees:
 	bsr	VerticalScrollUpBee
 	rts
 
+
 VerticalScrollDownBee:
 	lea	itemBeeDown,a1
 	cmp.w	#0,ITEM_SPRITE(a1)
@@ -39,6 +40,7 @@ VerticalScrollDownBee:
 .done:
 	rts
 
+
 VerticalScrollUpBee:
 	lea	itemBeeUp,a1
 	cmp.w	#0,ITEM_SPRITE(a1)
@@ -70,6 +72,7 @@ VerticalScrollUpBee:
 	move.w	#0,beeUpMovingDown
 .done:
 	rts	
+
 
 DetectDownBeeCollisions:
 	lea	itemBeeDown,a1
@@ -117,6 +120,7 @@ DetectDownBeeCollisions:
 	jmp	BigBang
 .skip:
 	rts
+
 
 DetectUpBeeCollisions:
 	lea	itemBeeUp,a1

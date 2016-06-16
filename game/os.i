@@ -1,6 +1,7 @@
 	xdef vectorBase
 	if TRACKLOADER=0
 ; from Photon http://coppershade.org/asmskool/SOURCES/Developing-Demo-Effects/DDE2/Coppershade-DDE2/PhotonsMiniWrapper1.04!.S	
+
 StartupFromOS:			
 	move.l	4.w,a6		;Exec library base address in a6
 	sub.l	a4,a4
@@ -79,7 +80,6 @@ LongJump:
 	move.l 	4.w,a6
 	jsr 	-414(a6)
 
-
 quit:
 	moveq	 #0,d0		;clear error return code to OS
 	rts			;back to AmigaDOS/Workbench.
@@ -112,11 +112,13 @@ IntReqD2:
 	move.w 	d2,$9c(a6)	;twice for A4000 compatibility
 	rts
 
+
 WaitBlitter:			;wait until blitter is finished
 	tst.w 	(a6)		;for compatibility with A1000
 	.loop:	btst #6,2(a6)
 	bne.s 	.loop
 	rts
+
 
 SaveSystemClock:
 	movem.l	d0-a6,-(sp)
@@ -188,6 +190,7 @@ RestoreSystemClock:
 	jsr     -456(a6)           ;DoIO()
 	movem.l	(sp)+,d0-a6
 	rts
+
 
 	cnop 0,4
 TOD_time_save:

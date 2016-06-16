@@ -8,7 +8,8 @@
 	xdef	RenderNumber3
 	xdef    RenderNumber2	
 	xdef	ToAscii
-	
+
+
 RenderCounter:
 	;; d0.w x position
 	;; a1.l	text
@@ -17,6 +18,7 @@ RenderCounter:
 	jsr	DrawText8
 	rts
 
+
 RenderCounterAtY:
 	;; d0.w x position
 	;; d1.w	y position
@@ -24,6 +26,7 @@ RenderCounterAtY:
 	lea	panel,a0
 	jsr	DrawText8
 	rts	
+
 
 RenderNumber4:
 	;; d0.l	number
@@ -38,6 +41,7 @@ RenderNumber4:
 	jsr	DrawText8
 	rts
 
+
 RenderNumber2:
 	;; d0.l	number
 	;; d1.w x position
@@ -50,6 +54,7 @@ RenderNumber2:
 	move.w	d3,d0
 	jsr	DrawText8
 	rts	
+
 
 RenderNumber3:
 	;; d0.l	number
@@ -64,10 +69,6 @@ RenderNumber3:
 	jsr	DrawText8
 	rts	
 	
-
-test:
-	dc.b	"HELLO"
-	dc.b	0
 	
 RenderNumber5:
 	;; d0.l	number
@@ -81,6 +82,7 @@ RenderNumber5:
 	move.w	d3,d0
 	jsr	DrawText8
 	rts	
+
 
 ResetCounter:
 	move.l	#"0000",(a0)
@@ -130,7 +132,6 @@ DecrementCounter:
 .startOfText:
 	rts	
 
-
 	
 ToAscii:
 	;; d0.l number
@@ -158,6 +159,7 @@ ToAscii:
 .done:
 	;; movem.l (a7)+,d0-d2/a1
 	rts
+
 
 staticBuffer:
 	dc.b	"000000000"

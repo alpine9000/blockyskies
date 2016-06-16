@@ -6,7 +6,6 @@
 	xdef PokePanelBitplanePointers
 
 	
-	
 SwitchBuffers:
 	;; offscreen - bitplane address
 	
@@ -50,7 +49,6 @@ SwitchBackgroundBuffers:
 	add.l	#BITPLANE_WIDTH_BYTES*SCREEN_BIT_DEPTH*(96-1),d0
 	lea 	copperListBpl2Ptr2_MP,a0
 	bsr.s	PokeBitplanePointers
-
 	
 	jsr	SwitchItemSpriteBuffers	
 	
@@ -67,8 +65,9 @@ SwitchBackgroundBuffers2:
 	move.l	backgroundOnscreen,backgroundOffscreen
 	move.l	a0,backgroundOnscreen
 	move.l	a0,a1
-
 	rts
+
+
 PokeBitplanePointers:
 	; d0 = frame offset in bytes
 	; a0 = BPLP copper list address
@@ -87,7 +86,7 @@ PokeBitplanePointers:
 	movem.l	(sp)+,d0/a1	
 	rts
 
-	
+
 PokePanelBitplanePointers:
 	; a0 = BPLP copper list address
 	; a1 = bitplanes pointer

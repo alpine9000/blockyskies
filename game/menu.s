@@ -16,7 +16,8 @@ MENU_TEXT_BOTTOM_COLOR		equ $5cd
 
 MENU_OFFSET			equ tutorialTopColor-playTopColor
 MENU_BOTTOM_OFFSET		equ (playBottomColor-playTopColor)
-	
+
+
 ShowMenu:
 	lea 	CUSTOM,a6
 	jsr	ReloadSplashScreen
@@ -68,6 +69,7 @@ ReShowMenu:
 	jsr	WaitVerticalBlank
 	bra	_ProcessJoystick
 
+
 RenderMenu:
 	;;  small restore
 
@@ -86,8 +88,6 @@ RenderMenu:
 	move.l a2,BLTDPTH(a6)		;destination top left corner
 	move.w 	#((32*5)<<6)|(96/16),BLTSIZE(a6)	
 
-	RenderVersion
-	
 	lea	menu,a1
 	lea	splash,a0
 	move.w	#(320/2)-(6*8)+4,d0
@@ -119,7 +119,8 @@ RenderMenu:
 	jsr	DrawMaskedText85
 	endif
 	rts
-	
+
+
 MenuUp:
 	cmp.l	#playTopColor,selectedPtr
 	beq	.done
@@ -135,6 +136,7 @@ MenuUp:
 	move.w	#MENU_SELECTED_BOTTOM_COLOR,(a0)
 .done:
 	rts
+
 
 MenuDown:
 	if TRACKLOADER=0
@@ -155,6 +157,7 @@ MenuDown:
 	add.l	#MENU_OFFSET,selectedPtr
 .done:
 	rts	
+
 
 ToggleMusic:
 	eor.w	#1,musicOnFlag
@@ -205,7 +208,8 @@ RefreshDifficulty:
 	jsr	WaitVerticalBlank
 	bsr	RenderMenu
 	rts
-	
+
+
 ButtonPressed:
 	cmp.l	#playTopColor,selectedPtr
 	beq	.playButton
@@ -244,6 +248,7 @@ ButtonPressed:
 	move.l	#tutorialLevelInstallers,nextLevelInstaller	
 	jmp	StartGame	
 
+
 WaitForButtonRelease:
 .joystickPressed:
 	jsr	WaitVerticalBlank
@@ -252,6 +257,7 @@ WaitForButtonRelease:
 	btst.b	#0,joystick
 	bne	.joystickPressed
 	rts
+
 
 WaitForJoystickRelease:
 	move.b	joystickpos,-(sp)
@@ -316,6 +322,7 @@ StrCpy:
 	bra	.loop
 .done:
 	rts
+
 
 v2Counter:
 	dc.l	0

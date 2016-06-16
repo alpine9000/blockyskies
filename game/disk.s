@@ -17,7 +17,6 @@ LoadDiskData:
 	lsr.l	#6,d0		; bytes -> sectors
 	lsr.l	#3,d0		
 	add.l	#2,d0		; offset for bootblock
-
 	
 	add.l	#512,d1
 	lsr.l	#6,d1		; bytes -> sectors
@@ -34,6 +33,5 @@ LoadDiskData:
 
 	endif
 	movem.l (sp)+,d0-a6
-
 
 	rts

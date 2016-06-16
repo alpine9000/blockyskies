@@ -3,6 +3,7 @@
 	xdef Init
 
 	;; custom chip base globally in a6
+	;; this routine is really only here for historical reasons, makes little sense now
 Init:
 	movem.l	d0-a6,-(sp)
 	

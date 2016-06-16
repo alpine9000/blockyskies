@@ -10,7 +10,8 @@ FONT_WIDTH		equ 8
 FONTMAP_WIDTH_BYTES	equ 32
 _SCREEN_BIT_DEPTH	equ 4
 _BITPLANE_WIDTH_BYTES	equ 320/8
-	
+
+
 DrawText8:
 	;; a0 - bitplane
 	;; a1 - text
@@ -47,7 +48,7 @@ DrawText8:
 	
 	btst	#2,d1					; check if odd or even char
 	beq	.evenChar				;
-.oddChar
+.oddChar:
 	subq	#8,d2					; offset the x position for the odd character
 	move.w	#$00FF,BLTAFWM(a6)			; select the second (odd) character in the word
 	subq	#1,a2					; move the destination pointer left by one byte

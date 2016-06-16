@@ -31,7 +31,8 @@ AddBobBaloon:
 	rts
 .continue:
 	rts
-	
+
+
 AddBobCloud:
 	lea	bob,a5
 .loop:
@@ -57,6 +58,7 @@ AddBobCloud:
 	bra	.loop
 .done:
 	rts
+
 
 ClearBobs:
 	move.w	bobsEnabled,-(sp)
@@ -85,7 +87,8 @@ ClearBobs:
 	bra	.loop
 .done:	
 	rts
-	
+
+
 ResetBobs:
 	move.w	#2,bobsEnabled 	; disables bob movement
 	bsr	RestoreBobBackgrounds
@@ -155,7 +158,8 @@ RestoreBobBackgrounds:
 .done:
 	movem.l	(sp)+,d0/a2
 	rts
-	
+
+
 SaveBobBackgrounds:
 	WaitBlitter		
 	move.w	#$ffff,BLTAFWM(a6)
@@ -212,7 +216,8 @@ SaveBobBackgrounds:
 	bra	.loop
 .done:
 	rts
-	
+
+
 RenderBob:
 	cmp.w	#0,bobsEnabled
 	beq	.dontRenderBobs
@@ -266,6 +271,7 @@ RenderBob:
 .dontRenderBobs:
 
 	rts	
+
 
 EnableBobs:
 	move.w	#1,bobsEnabled

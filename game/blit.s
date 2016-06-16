@@ -16,7 +16,8 @@
 ;;       1       0       1       0 
 ;;       1       1       0       1 
 ;;       1       1       1       1
-	
+
+
 BlitFillColor:
 	;; kills a0,d2,d3,d5,d5
 	;; a0 - bitplane
@@ -34,9 +35,9 @@ BlitFillColor:
 	beq	.zero
 	move.w	#BC0F_DEST|$FF,d5		; yes ? all ones
 	bra	.doblit
-.zero
+.zero:
 	move.w	#BC0F_DEST|$0,d5		; no ? all zeros
-.doblit
+.doblit:
 	WaitBlitter
 
 	move.w	#0,BLTCON1(A6)
@@ -54,7 +55,6 @@ BlitFillColor:
 
 	movem.l (sp)+,d2-d5/a0
 	rts
-
 
 
 _BlitScroll:
@@ -100,7 +100,6 @@ _BlitScroll:
 	rts
 
 
-
 BlitTile:
 	;; a0.l - dest bitplane pointer
 	;; a1.l - source tile pointer
@@ -130,6 +129,7 @@ BlitTile:
 	movem.l	(sp)+,d2/a0/a2
 	rts
 
+
 blitTileMuluTable:
 	dc.w	BITPLANE_WIDTH_BYTES*SCREEN_BIT_DEPTH*16*0
 	dc.w	BITPLANE_WIDTH_BYTES*SCREEN_BIT_DEPTH*16*1
@@ -147,7 +147,6 @@ blitTileMuluTable:
 	dc.w	BITPLANE_WIDTH_BYTES*SCREEN_BIT_DEPTH*16*13
 	dc.w	BITPLANE_WIDTH_BYTES*SCREEN_BIT_DEPTH*16*14
 	dc.w	BITPLANE_WIDTH_BYTES*SCREEN_BIT_DEPTH*16*15	
-	
 
 
 BlitBackgroundTile:

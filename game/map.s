@@ -2,7 +2,8 @@
 	
 	xdef	RenderPathway
 	xdef	ClearPathway
-	
+
+
 RenderPathway:
 	move.l	pathwayLastSafeTileAddress,d5
 	;; 	add.l	#2,d5
@@ -62,8 +63,6 @@ RenderPathway:
 	rts
 .pathwayNotComplete:
 	rts
-
-
 
 
 ClearPathway:
@@ -177,6 +176,7 @@ GetMapTile:
 	move.l	a2,d0
 	rts
 
+
 BlitTileLoopSetup:
 	WaitBlitter	
 	move.w	#0,BLTCON1(a6)
@@ -186,7 +186,8 @@ BlitTileLoopSetup:
 	move.w	#$ffff,BLTAFWM(a6)
 	move.w	#$ffff,BLTALWM(a6)
 	rts
-	
+
+
 BlitTileLoop:
 	;; a0.l - dest bitplane pointer
 	;; a1.l - source tile pointer
@@ -202,6 +203,7 @@ BlitTileLoop:
 	move.l 	a0,BLTDPTH(a6)		; dest
 	move.w 	#(16*SCREEN_BIT_DEPTH)<<6|(1),BLTSIZE(a6)	;rectangle size, starts blit
 	rts
+
 
 blitTileLoopMuluTable:
 	dc.w	BITPLANE_WIDTH_BYTES*SCREEN_BIT_DEPTH*16*0

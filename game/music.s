@@ -4,7 +4,8 @@
 
 p61Inited:
 	dc.w	0
-	
+
+
 StartMusic:
 .wait: 				; In case there is currently  fade in progress
 	jsr	WaitVerticalBlank

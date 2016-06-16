@@ -60,9 +60,7 @@ Entry:
 	lea	userstack,a7	
 	endif
 Entry2:
-	
 	lea 	CUSTOM,a6
-
 	move	#$7ff,DMACON(a6)	; disable all dma
 	move	#$7fff,INTENA(a6) 	; disable all interrupts		
 
@@ -88,7 +86,9 @@ Entry2:
 	jsr	StartMusic
 	jsr	ShowSplash
 MainMenu:
-a	jmp	ShowMenu
+	jmp	ShowMenu
+
+
 StartGame:
 	jsr 	BlueFill
 	jsr	InitialiseBackground
@@ -119,6 +119,7 @@ StartGame:
 	move.w	#(DMAF_SPRITE|DMAF_BLITTER|DMAF_SETCLR|DMAF_COPPER|DMAF_RASTER|DMAF_MASTER),DMACON(a6)
 
 	bra	InitialiseNewGame
+
 
 Reset:
 	move.w	#1,splashInvalid
@@ -265,13 +266,12 @@ PostCheckPlayerMiss:
 	beq	.dontRenderPathway
 	jsr	RenderPathway
 .dontRenderPathway:
-
 	
 	jsr	PlayNextSound
 
 	;; this is for the case when running in a fastest possible winuae config
 	;; and we get to this point before the new frame has started
-	;; I don't know if this is possible on a read amiga running from chip ram
+	;; I don't know if this is possible on a real amiga running from chip ram
 .superFastCpuHack:
 	move.l	$dff004,d0
 	and.l	#$1ff00,d0
@@ -282,6 +282,7 @@ PostCheckPlayerMiss:
 	jsr	FlashPickup
 
 	bra	GameLoop
+
 
 	if TRACKLOADER=0
 QuitGame:
@@ -294,6 +295,7 @@ QuitGame:
 	movem.l	(sp)+,d0-a6
 	jmp	LongJump
 	endif
+
 
 Update:	
 	jsr	UpdatePlayer
@@ -342,15 +344,18 @@ Update:
 	add.w	#1,pathwayFadeCount
 	rts
 
+
 RevealPathway:
 	move.w	#50,pathwayFadeCount
 	jsr	InstallTilePalette
 	rts
 
+
 FreezeScrolling:
 	move.w	#150,freezeCountdownCounter
 	move.w	#0,moving	
 	rts
+
 
 InitialiseNewGame:
 	jsr	InitialiseItems
@@ -374,9 +379,9 @@ GameOver:
 	jsr	Message
 	jsr	WaitForJoystick
 	jsr	RestorePanel
-
 	jmp	ShowHighScore
-	
+
+
 TutorialOver:
 	jsr	RestorePanel
 	add.l	#4,sp		; dirty hack - unwind the call stack
@@ -388,6 +393,7 @@ TutorialOver:
 	jsr	RestorePanel
 	bra	MainMenu
 
+
 V2Over:
 	jsr	RestorePanel
 	add.l	#4,sp		; dirty hack - unwind the call stack
@@ -398,6 +404,7 @@ V2Over:
 	jsr	WaitForJoystick
 	jsr	RestorePanel
 	bra	MainMenu
+
 
 InstallNextLevel:
 	move.l	nextLevelInstaller,a0
@@ -415,7 +422,8 @@ InstallNextLevel:
 	add.l	#4,a0
 	move.l	a0,nextLevelInstaller
 	rts
-	
+
+
 LevelComplete:
 	PlaySound Yay
 	jsr	ResetBobs	
@@ -580,7 +588,7 @@ PostMissedTile:
 	jsr	DecrementCounter
 	bra	Reset
 
-	
+
 BigBang:
 	PlaySound Falling
 	jsr	WaitVerticalBlank
@@ -776,6 +784,7 @@ InstallFlagsGreyPalette:
 	dbra	d0,.loop	
 	rts
 
+
 InstallTilePalette:
 	move.l	tileFade,tileFadePtr
 	lea	playAreaCopperPalettePtr2,a1	
@@ -894,7 +903,8 @@ RenderFreezeCountdown:
 	move.w	#0,d0
 	bsr	BlitCountdown	
 	rts	
-	
+
+
 BlitCountdown:
 	WaitBlitter	
 	;; d0.w	countdown digit

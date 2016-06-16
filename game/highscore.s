@@ -19,7 +19,8 @@ MENU_FIRE_BOTTOM_COLOR		equ $9d4 ;$fe7
 
 MENU_BOTTOM_OFFSET		equ (firstBottomColor-firstTopColor)
 MENU_OFFSET			equ (secondTopColor-firstTopColor)
-	
+
+
 ShowHighScore:
 	lea 	CUSTOM,a6
 	jsr	ReloadSplashScreen	
@@ -92,9 +93,8 @@ RenderHighScore:
 	cmp.l	#endHighScores,a2
 	bne	.loop
 
-	RenderVersion
-	
 	rts
+
 
 AddHighScore:
 	move.l	#endHighScores-4,a0
@@ -121,6 +121,7 @@ AddHighScore:
 .skip:
 	rts
 
+
 HighlightScore:
 	lea	firstTopColor,a0
 	lea	highScores,a1
@@ -142,6 +143,7 @@ HighlightScore:
 	bra	.loop	
 .done:
 	rts
+
 
 highScore:
 	dc.b	" HI SCORES  "

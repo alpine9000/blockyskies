@@ -205,9 +205,7 @@ _SetupItemSpriteData:
 	beq	.continueSingleSprite
 	add.w	#ITEM_SINGLE_SPRITE_BYTES,d0
 
-
 .continueSingleSprite:
-
 
 	adda.w	d0,a0
 
@@ -220,7 +218,6 @@ _SetupItemSpriteData:
 .singleSprite2:
 	move.w	#0,d3		
 .continueBee:
-
 
 	adda.w	d3,a0 		; ITEM_Y or 0 for bee
 
@@ -241,7 +238,6 @@ _SetupItemSpriteData:
 	move.w	ITEM_Y(a1),d0
 	lsl.w	#ITEM_SPRITE_SPACING_SHIFT_CONVERT,d0
 	lsr.w	#ITEM_Y_OFFSET_SHIFT_CONVERT,d1
-
 	
 	cmp.l	#itemBeeUp,a1	
 	bne	.notBeeUp
@@ -258,8 +254,6 @@ _SetupItemSpriteData:
 	
 .noYOffset:	
 .c1:
-
-	
 	suba.w	d3,a0	;#1*ITEM_SPRITE_VERTICAL_BYTES,a0 or 0 for bee
 	cmp.l   #itemEye,a1	
 	beq	.eyeSprite
@@ -448,7 +442,6 @@ beeDownMovingDown:
 	;; beeUp
 	ItemControl itemBeeUp,spriteBeeUp1,1
 
-
 	ItemSprite spriteCoinA1,sprite_coin-0.bin
 	ItemSprite spriteCoinA2,sprite_coin-0.bin
 	ItemSprite spriteCoinA3,sprite_coin-1.bin
@@ -487,10 +480,12 @@ beeDownMovingDown:
 nextSpriteSlot:
 	dc.w	0
 
+
 RegisterHighScore:
 	move.l	__score,d0
 	jsr	AddHighScore
 	rts
+
 
 __score:
 	dc.l	0

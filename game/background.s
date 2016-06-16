@@ -6,7 +6,8 @@
 	xdef	backgroundOnscreen
 	xdef	backgroundOffscreen
 	xdef	backgroundTilemap
-	
+
+
 InitialiseBackground:
 	move.l	#0,backgroundScrollX
 	move.l	backgroundOffscreen,a0
@@ -22,6 +23,7 @@ InitialiseBackground:
 	move.l	#0,d2
 	jsr	BlitFillColor
 	rts
+
 
 RenderBackgroundTile:	
 	;; a2 - map
@@ -69,10 +71,9 @@ RenderBackgroundTile:
 .blit:
 	add.w	d0,a1	
 	jsr	BlitBackgroundTile
-
-	
 	rts
-	
+
+
 OldRenderBackgroundTile:	
 	;; a2 - map
 	move.l	backgroundScrollX,d0
@@ -101,6 +102,7 @@ OldRenderBackgroundTile:
 	jsr	BlitBackgroundTile
 
 	rts
+
 
 RenderNextBackgroundFrame:
 	lea	backgroundMap,a2

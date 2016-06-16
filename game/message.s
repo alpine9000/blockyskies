@@ -5,7 +5,8 @@
 	xdef	HideMessagePanel
 	xdef	SavePanel
 	xdef    RestorePanel
-	
+
+
 SavePanel:
 	movem.l	d0-a6,-(sp)
 	move.w	#(32*4)<<6|(8),d0
@@ -17,6 +18,7 @@ SavePanel:
 	move.w	#1,panelSaved
 	movem.l	(sp)+,d0-a6
 	rts
+
 
 RestorePanel:
 	cmp.w	#0,panelSaved
@@ -31,7 +33,8 @@ RestorePanel:
 	movem.l	(sp)+,d0-a6
 .skip:
 	rts
-	
+
+
 Message:
 	;; a0 - bitplane
 	;; a1 - text
@@ -55,6 +58,7 @@ Message:
 	bsr	ShowMessagePanel
 	rts
 
+
 ShowMessagePanel:
 	jsr	WaitVerticalBlank
 	lea	mpanelCopperList,a0
@@ -69,11 +73,13 @@ HideMessagePanel:
 	bsr	RestorePanel	
 	rts
 
+
 InitialiseMessagePanel:
 	lea	mpanelCopperListBpl1Ptr,a0
 	lea	mpanel,a1
 	jsr	PokePanelBitplanePointers
 	rts
+
 
 panelSaved:
 	dc.w	0

@@ -39,6 +39,7 @@ PLAYER_INSTALL_COLOR_PALETTE	equ 0
 PLAYER_SPRITE_DATA		equ 4
 PLAYER_SPRITE_FALLING_DATA	equ 8	
 
+
 ResetPlayer:
 	bsr	SpriteDisableAuto
 	
@@ -58,16 +59,19 @@ ResetPlayer:
 	move.w	#PLAYER_INITIAL_Y+16,spriteYEnd
 	rts
 
+
 HidePlayer:
 	move.w	#0,spriteX
 	move.w	#0,spriteY
 	move.w	#0,spriteYEnd
 	rts
 
+
 InitialisePlayer:
 	move.l	#PLAYER_LIVES_COUNTER,livesCounterText
 	rts
-	
+
+
 ScrollSprites:
 	cmp.l	#0,foregroundScrollPixels
 	beq	.skip
@@ -108,7 +112,7 @@ UpdatePlayer:
 	add.l	#7*PLAYER_SPRITE_VERTICAL_BYTES,d0 
 	move.l	d0,currentSprite
 
-.skipRight
+.skipRight:
 	cmp.w	#0,spriteR
 	beq	.notRight
 	sub.w	#1,spriteR
@@ -161,7 +165,7 @@ UpdatePlayer:
 	sub.w	d1,spriteX
 	add.l	#5*PLAYER_SPRITE_VERTICAL_BYTES,d0 
 	move.l	d0,currentSprite				
-.skipLeft
+.skipLeft:
 	cmp.w	#0,spriteL
 	beq	.notLeft
 	sub.w	#1,spriteL
@@ -205,39 +209,14 @@ ProcessJoystick:
 .autoMoveDisabled2:	
 	endif
 
-
 	bsr	GetNextAutoMove
 	cmp.w	#1,d0
 	beq	.skip	
-
 .autoMoveDisabled:
 
-
-DiagonalJoystick:	macro
-	cmp.b	#\1,joystickpos
-	bne	.\@1
-	cmp.b	#\2,lastJoystickPos
-	bne	.\@2
-	move.b	#\3,joystickpos
-	bra	.process	
-.\@2:
-	move.b	#\2,joystickpos
-	bra	.process
-.\@1:
-	endm
-	
 	;; 812
 	;; 7 3
 	;; 654
-
-	if 0
-	DiagonalJoystick 2,1,3
-	DiagonalJoystick 8,1,7
-	DiagonalJoystick 4,3,5
-	DiagonalJoystick 6,5,7		
-
-	move.b	joystickpos,lastJoystickPos	
-	endif
 	
 .process:
 	cmp.b	#3,joystickpos
@@ -263,6 +242,7 @@ DiagonalJoystick:	macro
 .skip:
 	rts
 
+
 SpriteEnableAuto:
 	CompareScore SCORE_ARROW_SUBTRACTION
 	ble	.toZero
@@ -275,6 +255,7 @@ SpriteEnableAuto:
 	bsr	RenderPlayerScore
 	rts
 
+
 SpriteDisableAuto:
 	move.w	#0,spriteAutoMoveEnabled
 	move.w	#PLAYER_JUMP_PIXELS,playerJumpPixels
@@ -282,7 +263,8 @@ SpriteDisableAuto:
 	move.w	playerLevelPausePixels,playerPausePixels
 	move.w	playerLevelMissPixels,playerMissPixels		
 	rts
-	
+
+
 SetupSpriteData:
 	move.l	currentSprite,a0
 	move.w	spriteLagX,d0
@@ -317,15 +299,18 @@ SetupSpriteData:
 	move.l	#deadSprite,SPR7PTH(a6)	; unused - incompatible with oversize playfield data fetch
 	rts
 
+
 InstallPlayerColorPalette:
 	move.l	playerSpriteConfig,a0
 	move.l	PLAYER_INSTALL_COLOR_PALETTE(a0),a1
 	jsr	(a1)
 	rts
-	
+
+
 InstallPigColorPalette:	
 	include "out/sprite_pig-0-palette.s"
 	rts
+
 
 InstallGreenPigColorPalette:	
 	move.w #$000,COLOR16(a6)
@@ -334,21 +319,26 @@ InstallGreenPigColorPalette:
 	move.w #$3a4,COLOR17(a6)
 	rts	
 
+
 InstallCowColorPalette:	
 	include "out/sprite_cow-0-palette.s"
 	rts
+
 
 InstallCarColorPalette:	
 	include "out/sprite_car-0-palette.s"
 	rts	
 
+
 InstallCrocColorPalette:	
 	include "out/sprite_croc-0-palette.s"
 	rts	
 
+
 InstallRobotColorPalette:	
 	include "out/sprite_robot-0-palette.s"
 	rts
+
 
 InstallSilverRobotColorPalette:
 	move.w #$000,COLOR16(a6)
@@ -357,9 +347,11 @@ InstallSilverRobotColorPalette:
 	move.w #$aaa,COLOR19(a6)
 	rts	
 
+
 InstallTankColorPalette:	
 	include "out/sprite_tank-0-palette.s"
 	rts			
+
 
 CheckPlayerMiss:
 	;; check if player has fallen off the left side of the play area
@@ -397,7 +389,6 @@ CheckPlayerMiss:
 	add.l	d0,a2
 	add.l	d0,a3	
 
-
 	;; add the offset based on the sprite's x position
 	move.w	spriteX,d0
 	;; move.w	spriteLagX,d0
@@ -411,7 +402,6 @@ CheckPlayerMiss:
 	mulu.w  #FOREGROUND_PLAYAREA_HEIGHT_WORDS*2,d1
 	sub.l	d1,a2		; player x if y == bottom ?
 	sub.l	d1,a3		; player x if y == bottom ?	
-
 
 	;; add the offset based on the sprite's y postion
 	move.w	#PLAYER_BOTTOM_Y,d0
@@ -472,7 +462,6 @@ CheckPlayerMiss:
 	move.l	a2,pathwayLastSafeTileAddress
 	move.l	a3,foregroundLastSafeTileAddress	
 	move.l  playerXColumn,playerXColumnLastSafe
-
 
 	move.l	#PLAYER_BOTTOM_Y,d0	
 	sub.w	spriteY,d0
@@ -564,7 +553,8 @@ GetNextAutoMove:
 	bsr	SpriteDisableAuto	
 	move.w	#0,d0
 	rts
-	
+
+
 CheckDirection:
 	move.w	playerMissPixels,d1
 	cmp.w	#$7080,d0 	; dark horizontal
@@ -662,6 +652,7 @@ RenderPlayerScore:
 	jsr	RenderNumber3
 .done:
 	rts
+
 
 PreRenderColumnsRemaining:
 	move.l	playerXColumn,d0	

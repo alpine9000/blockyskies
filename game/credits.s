@@ -3,6 +3,7 @@
 
 CREDITS_COLOR_DEPTH	equ 4
 
+
 FillColor:
 	;; kills a0,d2,d3,d5,d5
 	;; a0 - bitplane
@@ -41,8 +42,8 @@ FillColor:
 	movem.l (sp)+,d2-d5/a0
 	rts
 
-Credits:
 
+Credits:
 	lea	foregroundBitplanes1,a0
 	move.l	#0,d0
 	move.l	#256,d1
@@ -110,7 +111,7 @@ RenderText:
 	bra	.loop	
 .done:
 	move.w	#20,d0
-	move.w	#231,d1
+	move.w	#230,d1
 	lea	copyright,a1
 	lea	foregroundBitplanes1,a0
 	jsr	DrawWSMaskedText8	
@@ -122,17 +123,21 @@ credits:
 	dc.b	0
 	dc.b	" "
 	dc.b	0	
-	dc.b	"GAME DESIGN   CHIPMUNK"
+	dc.b	"GAME DESIGN   CHIPMUNK & ALPINE9000"
 	dc.b	0	
-	dc.b	"   GRAPHICS   CHIPMUNK"
+	dc.b	"   GRAPHICS   CHIPMUNK & ALPINE9000"
 	dc.b	0	
 	dc.b	"      MUSIC   Simone \"JMD\" Bernacchia"
 	dc.b	0	
 	dc.b	"       CODE   ALPINE9000"
 	dc.b	0
 	dc.b	"     LEVELS   CHIPMUNK & ALPINE9000"
-	dc.b	0	
-	dc.b	" "	
+	dc.b	0
+	dc.b	"  MORE INFO   http://blockyskies.com"
+	dc.b	0
+	dc.b	"    VERSION   1.0"
+	dc.b	0
+	dc.b	" "
 	dc.b	0		
 	dc.b	"             THANKS"
 	dc.b	0
@@ -151,11 +156,6 @@ credits:
 	dc.b	"        SFX   Muska666,Mike Koenig"
 	dc.b	0
 	dc.b	"              CGEffex,timtube"
-	dc.b	0
-	dc.b	" "
-	dc.b	0
-	dc.b	"  MORE INFO   http://blockyskies.com"
-	dc.b	0
 	dc.b	0
 	dc.b	0
 	align 	4

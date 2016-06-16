@@ -5,10 +5,10 @@
 	xdef	RestoreSplashMenuSection
 	xdef	splash
 	xdef	splashInvalid
-	xdef 	versionText
 	
 SPLASH_COLOR_DEPTH		equ 5
 SPLASH_SCREEN_WIDTH_BYTES	equ 40
+
 
 RestoreSplashMenuSection:
 	move.l	backgroundOffscreen,a0
@@ -25,7 +25,8 @@ RestoreSplashMenuSection:
 	move.l a2,BLTDPTH(a6)		;destination top left corner
 	move.w 	#((112*5)<<6)|(96/16),BLTSIZE(a6)
 	rts
-	
+
+
 ReloadSplashScreen:
 	cmp.w	#0,splashInvalid
 	beq	.skip
@@ -50,7 +51,8 @@ ReloadSplashScreen:
 
 .skip:
 	rts
-	
+
+
 ShowSplash:
 	lea 	CUSTOM,a6
 	
@@ -95,7 +97,6 @@ ShowSplash:
 	move.w	#(DMAF_BLITTER|DMAF_SETCLR!DMAF_COPPER!DMAF_RASTER!DMAF_MASTER),DMACON(a6)		
 	move.w	#(INTF_SETCLR|INTF_VERTB|INTF_INTEN),INTENA(a6)	
 
-	RenderVersion
 	
 .wait:
 	jsr	WaitVerticalBlank
@@ -128,11 +129,6 @@ splashCopperListBplPtr:
 splashInvalid:
 	dc.w	1
 	align 4
-versionText:
-	dc.b	"VERSION 0.1"
-	dc.b	0
-	align 4
-	
 	section	.bss
 splash:
 	ds.b	endDiskSplash-diskSplash

@@ -3,13 +3,15 @@
 	xdef	PlayNextSound
 	xdef	ResetSound	
 	xdef	fadeMusic
-	
+
+
 ResetSound:
 	if SFX=1
 	move.l	#0,blackoutFrame
 	endif
 	rts
-	
+
+
 PlayNextSound:
 	cmp.w	#0,fadeMusic
 	beq	.dontFadeOutMusic
@@ -23,7 +25,6 @@ PlayNextSound:
 .fadeComplete:
 	move.w	#0,fadeMusic
 .dontFadeOutMusic:
-	
 	
 	if SFX=1	
 	move.w  #2,AUD3LEN(a6) ; set the empty sound for the next sample to be played	
@@ -39,7 +40,8 @@ PlayNextSound:
 	xdef    PlayWhooshSound
 	xdef    PlayYaySound
 	xdef	PlayBonusSound
-	
+
+
 PlayJumpSound:
 	move.l	d0,-(sp)
 	move.l	blackoutFrame,d0
@@ -102,6 +104,7 @@ PlayFallingSound:
 	move.w	#(DMAF_AUD3|DMAF_SETCLR),DMACON(a6)
 	rts
 
+
 PlayChachingSound:
 	move.l	d0,-(sp)
 	move.l	blackoutFrame,d0
@@ -120,6 +123,7 @@ PlayChachingSound:
 	move.l	(sp)+,d0
 	rts
 
+
 PlayYaySound:
 	KillSound
 	BlackoutSound 49
@@ -131,6 +135,7 @@ PlayYaySound:
 	move.w  #(endYay-yay)/2,AUD3LEN(a6) ;Set length in words
 	move.w	#(DMAF_AUD3|DMAF_SETCLR),DMACON(a6)
 	rts
+
 
 PlayBonusSound:
 	KillSound
