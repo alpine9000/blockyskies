@@ -45,19 +45,20 @@ a.download {
 }
 
 a.download:link {
-    color: #FC3B54;
+    color: #69EBFF;
+    
 }
 
 a.download:visited {
-    color: #FC3B54;
+    color: #69EBFF;
 }
 
 a.download:hover {
-    color: #FF5F77;
+    color: #41c3cd;
 }
 
 a.download:active {
-    color: #FF5F77;
+    color: #41c3cd;
 }
 
 a.bottomLink {
