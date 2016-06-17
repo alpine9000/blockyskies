@@ -148,6 +148,8 @@ ASSETS=$(IMAGEDATA) \
 	out/level6_foreground-map.s\
 	out/level7_foreground-map.s\
 	out/level8_foreground-map.s\
+	out/level9_foreground-map.s\
+	out/level10_foreground-map.s\
 	out/level11_foreground-map.s\
 	out/background-map.s  Makefile link.script.x\
 	out/menu-palette.s\

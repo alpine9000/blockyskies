@@ -122,6 +122,7 @@ RenderMenu:
 
 
 MenuUp:
+	move.w	#0,v2Counter
 	cmp.l	#playTopColor,selectedPtr
 	beq	.done
 	PlaySound Menu
@@ -139,6 +140,7 @@ MenuUp:
 
 
 MenuDown:
+	move.w	#0,v2Counter
 	if TRACKLOADER=0
 	cmp.l	#quitTopColor,selectedPtr
 	else
