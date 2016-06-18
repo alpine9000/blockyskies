@@ -135,7 +135,7 @@ credits:
 	dc.b	0
 	dc.b	"  MORE INFO   http://blockyskies.com"
 	dc.b	0
-	dc.b	"    VERSION   1.0"
+	dc.b	"    VERSION   0.73"
 	dc.b	0
 	dc.b	" "
 	dc.b	0		
