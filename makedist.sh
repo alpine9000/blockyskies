@@ -6,7 +6,7 @@ fi
 
 rm -rf BlockySkies
 mkdir BlockySkies
-cp game/bin/game1.adf BlockySkies/BlockySkiesPAL_$1.adf
+cp game/bin/blockyskies.adf BlockySkies/BlockySkiesPAL_$1.adf
 cat LEGAL.html | sed 's/<p><a href="\/">Go back<\/a><\/p>//' | html2text.py --ignore-images > LEGAL.txt
 cp LEGAL.txt BlockySkies
 #zip -r downloads/BlockySkiesPAL_BootDisk_$1.zip BlockySkies
