@@ -221,7 +221,7 @@ FadeInLoop:
 
 
 GameLoop:	
-	RenderSkippedFramesCounter
+	;; RenderSkippedFramesCounter
 	add.l	#1,frameCount
 	jsr	WaitVerticalBlank
 	bsr	HoriScrollPlayfield
