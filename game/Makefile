@@ -1,4 +1,3 @@
-TEST_VERSION=0
 EXAMPLE_NAME=blockyskies
 BACKGROUND_COLOR=09e
 BACKGROUND_GREY_COLOR=777
@@ -127,7 +126,7 @@ IMAGES=foreground.png \
 
 IMAGEDATA=$(addprefix out/, $(IMAGES:.png=.bin))
 
-VASM_EXTRA_ARGS=-DSFX=1 -DMAX_P61_SIZE=$(MAX_P61_SIZE) -allmp -DTEST_VERSION=$(TEST_VERSION)
+VASM_EXTRA_ARGS=-DSFX=1 -DMAX_P61_SIZE=$(MAX_P61_SIZE) -allmp
 
 LINKER_OPTIONS=-T link.script.x
 
@@ -150,7 +149,6 @@ ASSETS=$(IMAGEDATA) \
 	out/level8_foreground-map.s\
 	out/level9_foreground-map.s\
 	out/level10_foreground-map.s\
-	out/level11_foreground-map.s\
 	out/background-map.s  Makefile link.script.x\
 	out/menu-palette.s\
 	out/paletteA_playarea_fade.s out/paletteA_flags_fade.s out/paletteA_foreground-palette-table.s out/paletteA_tileFade.s\

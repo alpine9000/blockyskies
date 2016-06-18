@@ -8,17 +8,17 @@
  </tileset>
  <layer name="foreground" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgsGLEjtlH5egmB5O3A2ImIBbDQhOS20qmPnxylXTWRws/kGMmiLYExokWHvnBJrebTH3LaeAWapspBo0PStLBqBz15IjNH+SmSXqbOdTlkPPHYKoHRqocsfljJMvRot7BVTbA8oc0A+72Fy3kBlMbczDJweQBEHlbHQ==
+   eJztVrsNgzAUdGjYwE028AZJ4b2oMkuGoMpywRJWXk539kMoiCLFk4DT+99hjyGE+4Xb+McOwyqeF5sXG4zF1bJ5HsAKNhk8AhaFZZLH+mEtLB/DZhMTsVejllY+9r1iD0d/W2IWuy07SQIrsZPofwgfP7aPtM6u5Ye5PDHZvDEm4knMPAbduyem4ps3ptoHctnWwLiseK78tvJO7T9DLtSVmh3Tqq2TYdVvEjm9+mc9KD1afWAPW3eN+2D88fK8VwvbR4/LrH6v/lnOnj5Yjb15xvCtDzaDDO92tnv1wc6lo/SB5yP23dL/Xn2wPTB9KL4qfalzwKOrJ+REbvXOiJY+lOZ6XPbowxuzNTP2z7D7uAZ9//oFdqY75pmwir8BkoZVIg==
   </data>
  </layer>
  <layer name="pathway" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJztlbtxw0AMRO8CRqzAkSpw5P4LYOQKGKkCRUytG2vHz6sFRUV2IMxwSOG3Cxxwau0l/1k+r897b2076C+/R3HL9fno+7jPcBm2y0GOy42n3o43eA0cvYlX4TCXfrO+DbqUk7qEofxT/7a/hd4xv2S6fa+IT3IOmOSluBnxyrkihv70TfkXfI8cp36sPtnkRxzmnHbwxc9zsi5ymY3P3H9yrC3PsvJvpkvceXbjfWn3mOQlm59nOl/yJBf2ZOCfLFY6j0vxwlFdmmHWwNqTbcSnOUk1pLrPLc+N8nHGGnRbu5/l1BvG6Zx0hmk/0m/WKnyKcL0P4sB7wIU+wtFsOk9hVzbO2Nx/7xX7Ue2Hz5LXz3l33+qMhaHeOCZ3udoPn2Xxr+auwhs6cddcpTjWRy5V3yobz6e6WzX/1f1ZScV/z8d3Le2e6uf9Sp3bhFPNhed+psZHwl04YmM/nItzr/4fXvL38gVmF46U
+   eJztVjkOwkAMdJBS8YJUvIAq/39AKl6wFS+gogUrsTQZxiaCJkUsrRJv7PExuwazQ/Yo187sUXw/vde02Pn6RxyHY02UCy5lq/YrzLFbr+eGeFjvA/SQm804+GS/rZiq9y35Fj4D8dB32g51FdP9mq3jMJaKw0/E8BgDxUade3NO4qEf4nPO7q8W+mHvETNycExfnGuWD/eDpS/qb4veYL/qJ2Nh/zL/rHdK57wzPqI/XCM/Kz7CjnkJQS7CTs2cjKew57uHNVf1Z7Whn9r75p+dB77PPDsGwQf6IP4/fDAG5olcVOdmi/QirpoXqg8qTrPPc4Bni++Qul/8jufG5zr/flyKGZDxgTVG/+82Yyk+wl7lhrxnnPA9CMn6yvgV1i//A3DmZbEa2as8vWfMx1jkizNQvQfmpdAjb9WzKuYh+5IXymOC8g==
   </data>
  </layer>
  <layer name="items" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJztklsKgCAQRW1rlQU9bAO2/23kfAQSEt5xhhI8397XoDGN2uk77P0Cvufy7JWb6wv7Ua70xkHxZivoTV1QTaz1BXoOlKV1v5HhS5oN1MV/krScXIS3jqdCNucmudjguyveS9sfxQp0+XKTC7mTYPbt5UBPjX/OhTag/f/InNhwVLiLOqe2NOriAm4nDT8=
+   eJztkEkOwCAMA+nXukpd7/3/QyruiWySFHFgzvHYkFKnRcYB3+zghnH8ucPaz+TegLd5mIT+g9hkzSGHxcNmtb5WmJV9p2M3m9W6S1zI4XlHLRZi4wVukAPlkYfNe/ujyO9gO6W7FWRvwo0cEXlmRwnZ593t6WbYhLun0map29KveVqg1l92fHzHog2Q
   </data>
  </layer>
 </map>

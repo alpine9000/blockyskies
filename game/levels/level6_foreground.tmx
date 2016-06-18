@@ -8,17 +8,17 @@
  </tileset>
  <layer name="foreground" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgsGLEjtlH5egmB5O3A2ImIBbDQo/K0U8ORFsC40QLj/yoHP3kxKDxMZjSyEiWQ84fu/HE56gcfeRG88fgkkPOH/QsJ0fl8OcPaQbc7S9ayA2mNuZgkoPJAwD5DVur
+   eJxjZ2BgsGLEjhmgcuxY1GATG5UjXw4mbwfETEAshoVmgNLY1ODTRyu5rWTKkWvfbhzyMPtgYjBxZDlS7QPRlsA40cIjzwClsanBp2+wyeEKV0L6cIWdFp74INedYtD4GEr5g95yuMIOlneQ40GMQvuokT/ITXdDRQ5f/sAVH+TmVeT8gau8Y0CK14UkxDU29dRMy4FAXE9lM0nNH/jqj4HKH+SmO3z5ipg8l40W37RyC778Qav6Q5qBcHsXmxp8+vDJDaY25mCSg8kDAHi0YA4=
   </data>
  </layer>
  <layer name="pathway" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJztyaENACAQBMH7glDff29YsC9ISGbMik0AYG5V0nXXe/f6+AA/2IB4DXE=
+   eJztVTkOwjAQXBdUeUEqXkDF/x9AxQtS5QWp0oJFRhovezgpkJAyEnLssffw7BqRE/+K5/t3KyKrsXYvLfeQz9rScW5x/FictlnnzHEszO3NE4B/zgeAD/iz4uz1l+21/F9KO+Kb72bcuIFGfa7uH8nGTPFEHMA2sxwArVOUP2zX89fSxjGQX9YDcx1nBuSb7R3UvUZrk3z3B2ugz1l32cMBl474+S6PclUD1k/XAfcF6wLUe1klBvZk9QV+2ubQUdcvvtFPPf2ha55tRhwwG2uMI1qgxy0OZ2r8M61DD90XDEsTvLcYR2WXbWP08vF0RC1p35O09cb7OR5ty+MyRFpUeH0V1Sdy03az98qyzdribcl6KAJi8zD5VAPkx29dD9cbn3cu8rcX+v/ci5PvjLVFLHtr7sTv8AK6UmYF
   </data>
  </layer>
  <layer name="items" width="100" height="8">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20LL6AAAAA+BgyAAAE=
+   eJztkUkOgCAQBOFrrolr4tHl/98wczMjbmAPGKnjBKarQanIH0j0flYZZoNh9kWom6kzMQfUMfXoUm+y0R6Uhcp4+z8bti8T+COeyXniMN44S3kSvVzJLRxbx15n98lnArwbZdp09UEXiGcB9KCOfP8C7m2zvwQ5Xbmgco/otXxmBM8KKksLJQ==
   </data>
  </layer>
 </map>

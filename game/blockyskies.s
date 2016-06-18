@@ -954,18 +954,15 @@ BlitCountdown:
 
 	Level	1,"WELCOME TO BLOCKY SKIES!",70,2*2,12,10,"ALRIGHT! LEVEL 1 COMPLETE!",A,99,0,1,pig,1,1,200,3
 	Level	2,"ONE SMALL STEP FOR ROBOTS...",70,2*2,12,10,"LEVEL 2 COMPLETE!",B,99,0,0,robot,1,1,200,3
-	if TEST_VERSION=0
 	Level	3,"VROOOM!",70,2*2,10,8,"TIME FOR CHAMPAGNE!",H,99,1,1,car,1,1,200,3
-	Level	4,"ANYONE SEEN BENDER?",75,4*2,8,6,"WHOOHOO! LEVEL 4 COMPLETE!",C,99,2,1,silverRobot,2,1,200,3
-	Level	5,"RETURN TO BLOCKY SKIES!",75,2*2,10,8,"LEVEL 5 COMPLETE!",A,99,0,1,pig,1,1,200,3
-	Level	6,"TODO",75,2*2,10,8,"LEVEL 6 COMPLETE!",A,99,0,1,pig,1,1,200,3	
-	Level	7,"MOO!",75,4*2,8,6,"THAT WAS ONE FAST COW!!",E,99,2,1,cow,2,3,200,2
-	Level	8,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 8 DESTROYED!",D,99,1,0,tank,1,1,200,3
-	Level	9,"WHAT? WHAT?!",50,4*2,8,6,"TOO EASY?? LEVEL 9 COMPLETE!",F,99,0,0,croc,2,2,200,3
-	Level	10,"HAPPY HALLOWEEN!",50,4*2,8,6,"YOU WIN!!! THANKS FOR PLAYING!",G,99,1,0,greenPig,2,2,200,3
-	Level	11,"VROOM II!",50,4*2,4,2,"NICE EFFORT!",H,99,1,0,car,2,2,100,5
+	Level	4,"RETURN TO BLOCKY SKIES!",70,2*2,10,8,"LEVEL 4 COMPLETE!",A,99,0,1,pig,1,1,200,3
+	Level	5,"OK, IT GETS A BIG HARDER NOW",75,4*2,8,6,"WHOOHOO! LEVEL 5 COMPLETE!",C,99,2,1,silverRobot,2,1,200,3
+	Level	6,"MOO!",75,4*2,8,6,"THAT WAS ONE FAST COW!!",E,99,2,1,cow,2,3,200,2
+	Level	7,"KABOOM?!",75,4*2,8,6,"PHEW!!! LEVEL 7 DESTROYED!",D,99,1,0,tank,1,1,200,3
+	Level	8,"WHAT? WHAT?!",50,4*2,8,6,"TOO EASY?? LEVEL 8 COMPLETE!",F,99,0,0,croc,2,2,200,3
+	Level	9,"HAPPY HALLOWEEN!",50,4*2,8,6,"YOU WIN!!! THANKS FOR PLAYING!",G,99,1,0,greenPig,2,2,200,3
+	Level	10,"VROOM II!",50,4*2,4,2,"NICE EFFORT!",H,99,1,0,car,2,2,100,5
 
-	endif
 
 
 	Palette	A
@@ -1103,7 +1100,6 @@ panelGreyPalette:
 	include "out/panel-grey-table.s"
 levelInstallers:
 	dc.l	InstallLevel1
-	if TEST_VERSION=0
 	dc.l	InstallLevel2
 	dc.l	InstallLevel3
 	dc.l	InstallLevel4
@@ -1112,14 +1108,12 @@ levelInstallers:
 	dc.l	InstallLevel7
 	dc.l	InstallLevel8
 	dc.l	InstallLevel9
-	dc.l	InstallLevel10	
-	endif
 	dc.l	0
 nextLevelInstaller:
 	dc.l	levelInstallers	
 
 v2LevelInstallers:
-	dc.l	InstallLevel11
+	dc.l	InstallLevel10
 endV2LevelInstallers:
 	dc.l	0
 
