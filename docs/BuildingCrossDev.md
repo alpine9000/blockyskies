@@ -7,15 +7,25 @@ Notes:
    * My /usr/local is writable by me. You will probable need to add "sudo" to any "make install" lines
    * You can probably install most of this stuff using a package system rather than building from sources
 
-0. gcc-5.3.0 for OSX
+0. wget
     ```
-# svn checkout svn://gcc.gnu.org/svn/gcc/tags/gcc_5_3_0_release gcc-5.3.0-src
-# cd gcc-5.3.0-src
+# curl -O http://ftp.gnu.org/gnu/wget/wget-1.18.tar.xz
+# tar zxfv wget-1.18.tar.xz
+# cd wget-1.18
+# ./configure --predix=/usr/local --without-ssl
+# make -j4
+# make install
+```
+
+1. gcc-6.2.0 for OSX
+    ```
+# svn checkout svn://gcc.gnu.org/svn/gcc/tags/gcc_6_2_0_release gcc-6.1.0-src
+# cd gcc-6.2.0-src
 # ./contrib/download_prerequisites
 # cd ..
-# mkdir gcc-5.3.0-build
-# cd gcc-5.3.0-build
-#  ../gcc-5.3.0-src/configure --prefix=/usr/local --enable-languages=c,c++
+# mkdir gcc-6.2.0-build
+# cd gcc-6.2.0-build
+# ../gcc-6.2.0-src/configure --prefix=/usr/local --enable-languages=c,c++
 # make -j4
 # make install
 ```
