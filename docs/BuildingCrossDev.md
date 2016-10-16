@@ -30,7 +30,7 @@ Notes:
 # make install
 ```
 
-1. The fantastic AmigaOS cross compiler for Linux / MacOSX / Windows 
+2. The fantastic AmigaOS cross compiler for Linux / MacOSX / Windows 
 
    https://github.com/cahirwpz/amigaos-cross-toolchain
 
@@ -40,7 +40,7 @@ Notes:
 # ./toolchain-m68k --prefix=/usr/local/amiga build
 ```
    
-2. autoconf
+3. autoconf
     ```
     # curl -OL http://ftpmirror.gnu.org/autoconf/autoconf-2.69.tar.gz
     # tar xzf autoconf-2.69.tar.gz
@@ -50,7 +50,7 @@ Notes:
     # make install
 ```
 
-3. automake
+4. automake
     ```
     # curl -OL http://ftpmirror.gnu.org/automake/automake-1.15.tar.gz
     # tar xzf automake-1.15.tar.gz
@@ -60,17 +60,17 @@ Notes:
     # make install
 ```
 
-4. pkg-config
+5. pkg-config
     ```
     # curl -OL https://pkg-config.freedesktop.org/releases/pkg-config-0.29.tar.gz
     # tar zxf pkg-config-0.29.tar.gz
     # cd pkg-config-0.29
-    # ./configure --with-internal-glib --prefix=/usr/local LDFLAGS="-framework CoreFoundation -framework Carbon"
+    # ./configure --with-internal-glib --prefix=/usr/local LDFLAGS="-framework CoreFoundation -framework Carbon" CC=clang
     # make
     # make install
 ```
 
-5. lha
+6. lha
     ```
     # git clone https://github.com/jca02266/lha.git
     # aclocal
@@ -82,7 +82,7 @@ Notes:
     # make install
 ```
 
-6. libtool
+7. libtool
     ```
    # wget http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
    # tar zxfv libtool-2.4.6.tar.gz
@@ -92,20 +92,21 @@ Notes:
    # make install
 ```
 
-7. libpng
+8. libpng
     ```
-   # wget ftp://ftp.simplesystems.org/pub/png/src/libpng16/libpng-1.6.21.tar.gz
-   # tar zxfv libpng-1.6.21.tar.gz
-   # cd libpng-1.6.21
+   # wget ftp://ftp.simplesystems.org/pub/png/src/libpng16/libpng-1.6.25.tar.gz
+   # tar zxfv libpng-1.6.25.tar.gz
+   # cd libpng-1.6.25
    # ./configure --prefix=/usr/local
    # make
    # make install
 ```
 
-8. pngquant
+9. pngquant
     ```
     # git clone git://github.com/pornel/pngquant.git
     # cd pngquant/lib
+    # git apply ~/Projects/amiga/blockyskies/docs/pngquant.patch
     # ./configure --prefix=/usr/local
     # make
     # mkdir /usr/local/include/pngquant
@@ -113,7 +114,7 @@ Notes:
     # cp *.a /usr/local/lib
 ```
 
-9. GraphicsMagick
+10. GraphicsMagick
     ```
     # wget http://78.108.103.11/MIRROR/ftp/GraphicsMagick/1.3/GraphicsMagick-1.3.23.tar.gz
     # tar zxfv GraphicsMagick-1.3.23.tar.gz
@@ -123,14 +124,14 @@ Notes:
     # make install
 ```
 
-10. CMake
+11. CMake
     ```
     # curl -O  https://cmake.org/files/v3.5/cmake-3.5.1-Darwin-x86_64.tar.gz
     # tar zxfv cmake-3.5.1-Darwin-x86_64.tar.gz
     # mv CMake.app /Applications
 ```
 
-11. TMX C Loader
+12. TMX C Loader
     ```
     # git clone https://github.com/baylej/tmx.git
     # cd tmx
@@ -140,7 +141,7 @@ Notes:
     # make install
 ```
 
-12. SOX
+13. SOX
     ```
     # git clone git://sox.git.sourceforge.net/gitroot/sox/sox
     # cd sox
@@ -149,7 +150,7 @@ Notes:
     # make install
 ```
 
-13. Up to date vlink
+14. Up to date vlink
   ```
     # curl -O http://sun.hasenbraten.de/vlink/release/vlink.tar.gz
     # tar zxfv vlink.tar.gz 
@@ -159,7 +160,7 @@ Notes:
     # cp vlink /usr/local/amiga/bin
 ```
 
-14. html2text
+15. html2text
   ```
     # git clone https://github.com/aaronsw/html2text.git
     # cp html2text/html2text.py /usr/local/bin
