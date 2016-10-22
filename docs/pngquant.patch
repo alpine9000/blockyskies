@@ -1,0 +1,13 @@
+diff --git a/lib/Makefile b/lib/Makefile
+index bece512..a0c572a 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -35,7 +35,7 @@ $(SHAREDOBJS):
+ 	$(CC) -fPIC $(CFLAGS) -c $(@:.lo=.c) -o $@
+ 
+ $(SHAREDLIB): $(SHAREDOBJS)
+-	$(CC) -shared -Wl,-soname,$(SHAREDLIB).$(SOVER) -o $(SHAREDLIB).$(SOVER) $^ $(LDFLAGS)
++	$(CC) -shared -Wl,-install_name,$(SHAREDLIB).$(SOVER) -o $(SHAREDLIB).$(SOVER) $^ $(LDFLAGS)
+ 	ln -fs $(SHAREDLIB).$(SOVER) $(SHAREDLIB)
+ 
+ $(OBJS): $(wildcard *.h) config.mk
