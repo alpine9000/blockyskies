@@ -152,7 +152,7 @@ Notes:
 
 14. Up to date vlink
   ```
-    # curl -O http://sun.hasenbraten.de/vlink/release/vlink.tar.gz
+    # curl -OL http://sun.hasenbraten.de/vlink/daily/vlink.tar.gz
     # tar zxfv vlink.tar.gz 
     # cd vlink
     # mkdir objects
