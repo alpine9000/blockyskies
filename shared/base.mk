@@ -17,11 +17,11 @@ A500_RUN_SCRIPT=~/Google\ Drive/Amiga/amiga500.sh
 A600_RUN_SCRIPT=~/Google\ Drive/Amiga/amiga600.sh
 A1200T_RUN_SCRIPT=~/Google\ Drive/Amiga/amiga1200t.sh
 
-VASM=/usr/local/amiga/m68k-amigaos/bin/vasmm68k_mot
+VASM=/usr/local/amiga/vgcc/bin/vasmm68k_mot
 #VASM_ARGS=-phxass -Fhunk -quiet -spaces
 VASM_ARGS=-Fhunk -quiet -esc 
-VLINK=/usr/local/amiga/bin/vlink
-AMIGA_INCLUDE=/usr/local/amiga/m68k-amigaos/ndk/include
+VLINK=/usr/local/amiga/vgcc/bin/vlink
+AMIGA_INCLUDE=/usr/local/amiga/vgcc/ndk/include
 
 ifndef FLOPPY
 FLOPPY=bin/$(EXAMPLE_NAME).adf
@@ -127,7 +127,7 @@ $(FLOPPY): out/bootblock.bin
 	@ls -lh out/bootblock.bin
 
 out/bootblock.bin: out/bootblock.o
-	vlink -brawbin1 $< -o $@
+	$(VLINK) -brawbin1 $< -o $@
 
 out/bootblock.o: $(BOOTBLOCK_ASM) $(PROGRAM_BIN)
 	$(VASM) $(VASM_ARGS) $(VASM_EXTRA_BOOTBLOCK_ARGS) -DUSERSTACK_ADDRESS="\$$$(USERSTACK_ADDRESS)" -DBASE_ADDRESS="\$$$(BASE_ADDRESS)"  $< -o $@ -I$(AMIGA_INCLUDE)

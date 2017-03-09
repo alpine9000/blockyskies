@@ -15,6 +15,8 @@
 #include <math.h>
 #include "quant.h" 
 
+
+#define __ABS(x) (x >= 0 ? x : -x)
  
 quant_image_t* 
 quant_newImage(int w, int h)
@@ -203,9 +205,9 @@ nearest_color(int *v, node_heap *h) {
   int diff, max = 100000000;
   oct_node o = 0;
   for (i = 1; i < h->n; i++) {
-    diff =  3 * abs(h->buf[i]->r - v[0])
-      + 5 * abs(h->buf[i]->g - v[1])
-      + 2 * abs(h->buf[i]->b - v[2]);
+    diff =  3 * __ABS(h->buf[i]->r - v[0])
+      + 5 * __ABS(h->buf[i]->g - v[1])
+      + 2 * __ABS(h->buf[i]->b - v[2]);
     if (diff < max) {
       max = diff;
       o = h->buf[i];

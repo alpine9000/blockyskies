@@ -395,7 +395,7 @@ out/adf/main.o: $(ASSETS)
 out/workbench/main.o: $(ASSETS)
 
 bin/BlockySkies: bin out $(ALL_TOOLS)  $(ALL_WORKBENCH_OBJS) 
-	vlink	-hunkattr DATA=2 -hunkattr CODE=2 -hunkattr .text=2 -hunkattr .code=2 -hunkattr .data=2	-hunkattr .noload=2 -hunkattr .bss=2 $(ALL_WORKBENCH_OBJS) -o $@
+	$(VLINK) -hunkattr DATA=2 -hunkattr CODE=2 -hunkattr .text=2 -hunkattr .code=2 -hunkattr .data=2	-hunkattr .noload=2 -hunkattr .bss=2 $(ALL_WORKBENCH_OBJS) -o $@
 	cp $@ ~/A1200
 	cp $@ ~/A4000
 	cp assets/BlockySkies.info bin
